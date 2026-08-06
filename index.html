@@ -1224,10 +1224,6 @@ img.lazyloaded {
   </style>
 	
 	<style type="text/css"> /* 常规计算 */
-.Leak_data{
-	display:none;
-}
-
 .Category_Header {
     display: flex;
     justify-content: space-between;
@@ -1570,6 +1566,10 @@ img.lazyloaded {
 		padding: 0.6rem;
 	}
 
+}
+		
+.Leak_data{
+	display:none;
 }
 	</style>
 
@@ -10889,10 +10889,10 @@ var Card_1_Monster_Type_B = "";
 var Card_1_Monster_Type_C = "";
 var Card_1_Monster_Type_D = "";
 var Card_1_Monster_Type_E = "";
-$("#Card_Page_1_2").hide();
-$("#Card_Page_1_3").hide();
-$("#Card_Page_1_4").hide();
-$("#Card_Page_1_5").hide();
+//$("#Card_Page_1_2").hide();
+//$("#Card_Page_1_3").hide();
+//$("#Card_Page_1_4").hide();
+//$("#Card_Page_1_5").hide();
 
 
 window.Element_Link = {
@@ -11034,12 +11034,12 @@ $("#Content_05_div").append(Card_1_Monster_Type_E);
 
 // $("#Content_01").click();
 
-setTimeout(() => {
-	$("#Card_Page_1_2").show();
-	$("#Card_Page_1_3").show();
-	$("#Card_Page_1_4").show();
-	$("#Card_Page_1_5").show();
-},500);
+//setTimeout(() => {
+//	$("#Card_Page_1_2").show();
+//	$("#Card_Page_1_3").show();
+//	$("#Card_Page_1_4").show();
+//	$("#Card_Page_1_5").show();
+//},500);
 
 function show_leak(){
 	$(".Leak_data").removeClass("Leak_data");
