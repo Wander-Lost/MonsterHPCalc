@@ -5438,13 +5438,15 @@ $(function() {
 </script>
 
 <script type="text/javascript"> // 常规生成 怪物数据。问号图片：https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Item_Unknown.png
-// 注：7.0 版本的怪物图片链接未来需要改为 Fandom Wiki。注意版本信息、抗性信息改动，以及标题和描述，并加入行为机制。数据编辑于 26/7/8。
+// 26/07/08 注：7.0 版本的怪物图片链接未来需要改为 Fandom Wiki。注意版本信息、抗性信息改动，以及标题和描述，并加入行为机制。
+// 26/08/14 注：7.0 版本的怪物图片还剩地方传奇、幽境危战链接未来需要改为 Fandom Wiki。现已补充全部 7.0 版本怪物机制。
 
 window.Monster_Type_A = {
 	"V70":{
 		"Version":"7.0：幽境危战 · 星芒之役",
 		"Monsters":{
 			70001:{
+				"ID":"26310505",
 				"Name":"嵌合翼骏狮 · 激荡 / 摧枯伟力",
 				"HP":"12.89290925",
 				"HPType":"2",
@@ -5462,6 +5464,7 @@ window.Monster_Type_A = {
 				}
 			},
 			70002:{
+				"ID":"23060405",
 				"Name":"历经百战的风役人 · 迅斩 / 诡谲芒锋",
 				"HP":"11.23435",
 				"HPType":"2",
@@ -6148,22 +6151,24 @@ window.Monster_Type_A = {
 
 window.Monster_Type_B = {
 	"V70":{
-		"Version":"7.0：？？？",
+		"Version":"7.0：古兽冰原 / 永凝冻土 / 霜殛寒峰 / 焰羽谷 / 白桦雪葬地",
 		"Monsters":{
 			70101:{
 				"ID":"26310601",
-				"Name":"嵌合梭地兽",
+				"Name":"斑劫",
 				"NameTags":"地方传奇 · ",
 				"HP":"38",
 				"HPType":"2",
 				"HPShow":"38.0",
 				"Element":"雷",
-				"Title":"身障者",
+				"Title":"陆行疾隼",
 				"Type":"地方传奇",
-				"Desc":"？？？",
+				"Behavior":"• 斑劫初始处于「@缩小态#」，行动灵活，该状态抗性 @+120%#，另外本状态开始会自带一个<Elec>雷计量条#，满 @45# 点计量，每秒增长 @1# 点，受到<Elec>雷元素攻击#后额外增加 @2# 点，当计量满时，斑节将进入「@巨大态#」，全抗降低变为正常，行动缓慢，失去掘地和滚动行为。<br>• 斑劫进入「巨大态」后，@22s# 后将施放超能爆击「坍星殛卵」，蓄力时间为 @7s#，此时若成功施放大招，那么将重新变小；在蓄力期间，若受到 @3# 次及以上的@星烁反应#，则「坍星殛卵」被中断，那么斑劫会先变小 @6s#，之后会继续变大 @14s#，再重新变小。<br><br>「星烁反应」影响效果如下：<br>• 「坍星殛卵」将施放失败，触发瞬间斑劫变小，之后会变大一段时间后再度变小。<br>• 「百雳一辉」技能会被打断，掉落 @2# 枚<Elec>雷元素微粒#，「缩小态」下将不再能施放本技能。",
+				"Desc":"在至冬，一度盛行的生物炼金的产物。曾几何时，一切生命的要素就如同无数幅摔在地上的拼图，而进行尝试的研究者肆意将之进行拼贴，不过其中大部分的产物都因为违背世界的规律而失败死去。在暗中以枭隼的目光盯住猎物、于岩土与冰雪中穿梭的它，在如今仍遗留于世的诸多合成魔兽中，或许也是最为狡黠的那个。",
 				"ImgLink":"https://gensh.honeyhunterworld.com/img/m_63106.webp",
 				"RES":{
-					"常态":	[10, 10, 30, 10, 10, 10, 10, 10],
+					"缩小态":	[130,130,150,130,130,130,130,130],
+					"巨大态":	[10, 10, 30, 10, 10, 10, 10, 10],
 				}
 			},
 			70201:{
@@ -6176,25 +6181,29 @@ window.Monster_Type_B = {
 				"Element":"雷",
 				"Title":"身障者",
 				"Type":"历经百战",
-				"Desc":"？？？",
+				"Behavior":"• 斑劫初始处于「@缩小态#」，行动灵活，该状态抗性 @+120%#，另外本状态开始会自带一个<Elec>雷计量条#，满 @45# 点计量，每秒增长 @1# 点，受到<Elec>雷元素攻击#后额外增加 @2# 点，当计量满时，斑节将进入「@巨大态#」，全抗降低变为正常，行动缓慢，失去掘地和滚动行为。<br>• 斑劫进入「巨大态」后，@22s# 后将施放超能爆击「坍星殛卵」，蓄力时间为 @7s#，此时若成功施放大招，那么将重新变小；在蓄力期间，若受到 @3# 次及以上的@星烁反应#，则「坍星殛卵」被中断，那么斑劫会先变小 @6s#，之后会继续变大 @14s#，再重新变小。<br><br>「星烁反应」影响效果如下：<br>• 「坍星殛卵」将施放失败，触发瞬间斑劫变小，之后会变大一段时间后再度变小。<br>• 「百雳一辉」技能会被打断，掉落 @2# 枚<Elec>雷元素微粒#，「缩小态」下将不再能施放本技能。",
+				"Desc":"在至冬，一度盛行的生物炼金的产物。曾几何时，一切生命的要素就如同无数幅摔在地上的拼图，而进行尝试的研究者肆意将之进行拼贴，不过其中大部分的产物都因为违背世界的规律而失败死去。在暗中以枭隼的目光盯住猎物、于岩土与冰雪中穿梭的它，在如今仍遗留于世的诸多合成魔兽中，或许也是最为狡黠的那个。",
 				"ImgLink":"https://gensh.honeyhunterworld.com/img/m_63106.webp",
 				"RES":{
-					"常态":	[10, 10, 30, 10, 10, 10, 10, 10],
+					"缩小态":	[130,130,150,130,130,130,130,130],
+					"巨大态":	[10, 10, 30, 10, 10, 10, 10, 10],
 				}
 			},
 			70102:{
 				"ID":"25133801",
-				"Name":"嵌合兽怪箭士",
+				"Name":"弗瑞奥萨",
 				"NameTags":"地方传奇 · ",
 				"HP":"55",
 				"HPType":"2",
 				"HPShow":"55.0",
-				"Title":"截留于永恒之前的造物",
+				"Title":"已无守护之物的守护者",
 				"Type":"地方传奇",
-				"Desc":"？？？",
+				"Behavior":"• 弗瑞奥萨会尝试在遁地移动时会在目标处留下「阻生根须」，@1.8s# 后现出原型。「阻生根须」的@弱点位于上方发光部位#，该位置被任意攻击命中 @1# 次即可摧毁（可能需要远程角色）。弗瑞奥萨施放「流天箭雨」时产生 @2# 个「阻生根须」，持续 @10s#。<br>• 破坏所有「阻生根须」后弗瑞奥萨将瘫痪 @13s#，期间全抗降低 @50%#。<br><br>「星烁反应」影响效果如下：<br>• 「阻生根须」将会@缩短#，变得更矮更弱，无需命中顶端，只需击中本体即可摧毁。（需根须本身受影响，弗瑞奥萨受影响不影响范围外的根须）<br>• 「流矢烁寒」技能会受影响：弗瑞奥萨发射的追踪箭目标错位，并且它的弓将短暂消失，在原地发呆数秒。",
+				"Desc":"一度险些失去生命的兽怪弓箭手，经过了炼金术的改造，不仅身躯的强度超越了生物的极限，亦获得了一定程度上操纵树木的权能。原本应该舍弃旧日的身躯，全然转变为超越时间的，更接近永恒的生命形式。但在最后一刻选择了放弃，于是维持着仿佛被树木寄生一般的姿态。",
 				"ImgLink":"https://gensh.honeyhunterworld.com/img/m_51338.webp",
 				"RES":{
 					"常态":[-20, 10, 10, 40, 10, 40, 40, 10],
+					"瘫痪":[-70,-40,-40,-10,-40,-10,-10,-40],
 				}
 			},
 			70202:{
@@ -6206,22 +6215,25 @@ window.Monster_Type_B = {
 				"HPShow":"12.826",
 				"Title":"截留于永恒之前的造物",
 				"Type":"历经百战",
-				"Desc":"？？？",
+				"Behavior":"• 弗瑞奥萨会尝试在遁地移动时会在目标处留下「阻生根须」，@1.8s# 后现出原型。「阻生根须」的@弱点位于上方发光部位#，该位置被任意攻击命中 @1# 次即可摧毁（可能需要远程角色）。弗瑞奥萨施放「流天箭雨」时产生 @2# 个「阻生根须」，持续 @10s#。<br>• 破坏所有「阻生根须」后弗瑞奥萨将瘫痪 @13s#，期间全抗降低 @50%#。<br><br>「星烁反应」影响效果如下：<br>• 「阻生根须」将会@缩短#，变得更矮更弱，无需命中顶端，只需击中本体即可摧毁。（需根须本身受影响，弗瑞奥萨受影响不影响范围外的根须）<br>• 「流矢烁寒」技能会受影响：弗瑞奥萨发射的追踪箭目标错位，并且它的弓将短暂消失，在原地发呆数秒。",
+				"Desc":"一度险些失去生命的兽怪弓箭手，经过了炼金术的改造，不仅身躯的强度超越了生物的极限，亦获得了一定程度上操纵树木的权能。原本应该舍弃旧日的身躯，全然转变为超越时间的，更接近永恒的生命形式。但在最后一刻选择了放弃，于是维持着仿佛被树木寄生一般的姿态。",
 				"ImgLink":"https://gensh.honeyhunterworld.com/img/m_51338.webp",
 				"RES":{
 					"常态":[-20, 10, 10, 40, 10, 40, 40, 10],
+					"瘫痪":[-70,-40,-40,-10,-40,-10,-10,-40],
 				}
 			},
 			70103:{
 				"ID":"25139001",
-				"Name":"矮灵雕刻师",
+				"Name":"丘林",
 				"NameTags":"地方传奇 · ",
 				"HP":"52",
 				"HPType":"2",
 				"HPShow":"52.0",
-				"Title":"凝造之冰的观想",
+				"Title":"实习雕刻师但是武道大成",
 				"Type":"地方传奇",
-				"Desc":"？？？",
+				"Behavior":"• 丘林将会雕刻出「巨口霜精」，霜精会朝着玩家方向发射伤害极高的雪球！<br>• 正常情况下，冰块在 @4s# 后会成为「巨口霜精」，「巨口霜精」具有 <Ice>120U 冻元素#，每个「巨口霜精」存在 @40s#，之后自毁消失。在部分区域内，丘林每次雕刻都会使用两枚冰块。<br>• 「@星烁反应#」影响效果：「巨口霜精」将雕刻失败，冰块会变成无害的随机小动物雕像，雕像具有 <Ice>3U 冻元素#，这些雕像存在 @12s# 后自毁。",
+				"Desc":"在兽怪雕塑大师布拉金手下刻苦学习臻冰雕塑技艺的矮灵。然而，布拉金的技巧是一种以速度为最优先，追求短时间内完成作品的雕塑手法，所进行的也大多是躯体和手法的训练。理所当然的，日复一日的刻苦并没有令作为学徒的丘林锻炼出什么艺术审美，但是很快，他发现自己变成了学徒中最能打的那个…",
 				"ImgLink":"https://gensh.honeyhunterworld.com/img/m_51390.webp",
 				"RES":{
 					"常态":[10, 10, 10, 30, 30, 10, 10, 10],
@@ -6236,7 +6248,8 @@ window.Monster_Type_B = {
 				"HPShow":"12.584",
 				"Title":"凝造之冰的观想",
 				"Type":"历经百战",
-				"Desc":"？？？",
+				"Behavior":"• 丘林将会雕刻出「巨口霜精」，霜精会朝着玩家方向发射伤害极高的雪球！<br>• 正常情况下，冰块在 @4s# 后会成为「巨口霜精」，「巨口霜精」具有 <Ice>120U 冻元素#，每个「巨口霜精」存在 @40s#，之后自毁消失。在部分区域内，丘林每次雕刻都会使用两枚冰块。<br>• 「@星烁反应#」影响效果：「巨口霜精」将雕刻失败，冰块会变成无害的随机小动物雕像，雕像具有 <Ice>3U 冻元素#，这些雕像存在 @12s# 后自毁。",
+				"Desc":"在兽怪雕塑大师布拉金手下刻苦学习臻冰雕塑技艺的矮灵。然而，布拉金的技巧是一种以速度为最优先，追求短时间内完成作品的雕塑手法，所进行的也大多是躯体和手法的训练。理所当然的，日复一日的刻苦并没有令作为学徒的丘林锻炼出什么艺术审美，但是很快，他发现自己变成了学徒中最能打的那个…",
 				"ImgLink":"https://gensh.honeyhunterworld.com/img/m_51390.webp",
 				"RES":{
 					"常态":[10, 10, 10, 30, 30, 10, 10, 10],
@@ -7825,10 +7838,10 @@ window.Monster_Type_B = {
 
 window.Monster_Type_C = {
 	"V70":{
-		"Version":"7.0：至冬 · ？？？",
+		"Version":"7.0：至冬 · 永凝冻土 / 古兽冰原",
 		"Monsters":{
 			70401:{
-				"ID":"25140101",
+				"ID":"51401",
 				"ID_Name":"Monster_Zharptitsa_02",
 				"Name":"不灭衍生造物",
 				"NameTags":"",
@@ -7838,15 +7851,16 @@ window.Monster_Type_C = {
 				"Element":"火",
 				"Title":"永恒焰羽的残次身躯",
 				"Type":"异种魔兽",
-				"Behavior":"• 不灭衍生造物会燃烧自己的生命进入@「命耀之姿」#状态，该状态下获得@多层复生护盾#，此时若其造成伤害，将@回复自身生命值#。<br>• 当复生护盾低于一定层数或「命耀之姿」持续一定时长后，会尝试释放「茹焰的灼华」，只有击破所有复生护盾能令其停止。<br>• 若受到@星烁反应#影响，其尝试复生的一切举动都将是徒劳无功…",
+				"Behavior":"• 会消耗 @18%# 生命值进入「命耀之姿」状态，「命耀之姿」状态下，获得 @9# 层 @2%# 生命值的护盾。敌人的所有攻击命中（@需要打出伤害数字#）时都会回复 @3%# 生命值，直至所有护盾被破除或本次消耗的生命值被完全回复。<br>• 若敌人受@星烁反应#影响，则无法回复生命值。生成护盾时，若敌人受@星烁反应#影响，则只生成 @7# 层（即 @14%# 生命值）。<br>• 进入「命耀之姿」状态 @40s# 后，敌人还将尝试施放「茹焰灼华」，「茹焰灼华」的伤害则会为其恢复 @15%#生命值，同时移除护盾。「命耀之姿」状态下的总生命值恢复量不会超过 @18%# 生命值，即至多恢复到开盾之前的生命值。<br>• 破除护盾后的 15s 内，所有抗性降低 @50%# 。结束后立刻再次开启「命耀之姿」。",
 				"Desc":"名为卡谢伊的炼金术士在制造名为火鸟的个体时的副产物。<br>这或许是这位阴沉炼金术士的习惯，一旦同一批的某个实验体成功，其他的均会被废弃或是被随意处置。<br>而这具本该融合某种力量成就完成体的衍生造物，如今也只能作为残缺而无智的野兽于山峡之中无尽的徘徊。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Zharptitsa_02.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/1/1c/Immortal_Construct_Icon.png",
 				"RES":{
-					"常态":	[50, 10, 10, 10, 10, 10, 10, 10]
+					"常态":	[50, 10, 10, 10, 10, 10, 10, 10],
+					"瘫痪":	[0,-40,-40,-40,-40,-40,-40,-40]
 				}
 			},
 			70402:{
-				"ID":"26310501",
+				"ID":"63105",
 				"ID_Name":"Monster_Chimera_Manticore_01",
 				"Name":"嵌合翼骏狮",
 				"NameTags":"",
@@ -7855,11 +7869,12 @@ window.Monster_Type_C = {
 				"HPShow":"10.9",
 				"Title":"单体的协奏者",
 				"Type":"异种魔兽",
-				"Behavior":"• 嵌合翼骏狮会在「唤雷」与「驱风」两种强化状态间交替。<br>• 「唤雷」状态下，击破其@雷元素护罩#可令其陷入虚弱。此外，其想要扩散雷剑的意图亦可被@星烁反应#打断…<br>• 「驱风」状态下，它会尝试吸收场上的风球发动攻势，此时@击破风球或利用星烁反应#，即可阻止其蓄能且令其陷入虚弱状态。",
+				"Behavior":"会在「唤雷」与「驱风」两种强化状态间交替。<br>• <Elec>「唤雷」#：首领获得 <Elec>12U 雷元素护盾#，并周期性造成大范围伤害；若此时强敌正处于@辉映·星烁#效果的影响之下，则技能将被打断，并削减 @4U #护盾，并产生 @6# 个<Elec>雷元素微粒#；通过元素反应破除护罩后，强敌瘫痪 @12s#，全抗降低 @70%#<br>• <Wind>「驱风」#：首领不断使用盘旋攻击，期间产生 @5# 个<Wind>风能量球#，以吸收发动下一波攻势。用<Fire>火#/<Water>水#/<Elec>雷#/<Ice>冰#转化 @3# 个及以上的<Wind>风能量球#可使其瘫痪，若敌人处于@星烁反应#影响也可使其瘫痪，并损失 @15%# 血量<br>• 若长时间处于「驱风」状态下，则也会重新展开护罩进入「唤雷」状态。<br>• 第 @2# 次/第 @3# 次及之后展开护罩时，护罩的厚度会降至 <Elec>8U# / <Elec>6U#。",
 				"Desc":"生物炼金的产物，是被弃置的合成魔兽之一。<br>为了某个伟大愿望的实现，一位炼金术士以某种不可被复述的技术造就了名为「雏形」的诸多原体。<br>这其中，唯有一个成功生长成了规划中完美的造物，其他接近完美却最终失败的原体被随意制作成了诸多双头的魔兽。<br>虽被视为失败品，但这些特殊的双头魔兽拥有的力量依然是伟大的，在合成魔兽的范畴中，已无任何他物能够与它们相抗衡。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Chimera_Manticore.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/f/fa/Chimeric_Winged_Lion_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 50, 10, 50, 10, 10, 10],
+					"瘫痪":	[-60,-60,-20,-60,-20,-60,-60,-60]
 				}
 			},
 		}
@@ -9931,7 +9946,7 @@ window.Monster_Type_D = {
 		"Version":"7.0：至冬",
 		"Monsters":{
 			70501:{
-				"ID":"25131001",
+				"ID":"51310",
 				"ID_Name":"Vukodlak_Strong_NoWeapon_01",
 				"Name":"兽怪投掷者",
 				"NameTags":"",
@@ -9941,13 +9956,13 @@ window.Monster_Type_D = {
 				"Title":"兽怪暴徒<br>投掷者",
 				"Type":"异种魔兽",
 				"Desc":"在至冬的诸多兽怪之中，相对壮硕的那类。<br>拥有野兽的力量和类人的躯体，强壮的上肢力量令他们在进行投掷时能拥有更强的威力和更高的精准度。兽怪或许并不精通臻冰凝造的技艺或是元素力的使用，但是要说到对于身躯力量的掌控，在诸多妖精的族裔中也能算得上名列前茅。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Vukodlak_Strong_NoWeapon.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/e/ed/Volkodlak_Lobber_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 10, 10, 10, 10]
 				}
 			},
 			70502:{
-				"ID":"25131201",
+				"ID":"51312",
 				"ID_Name":"Vukodlak_Strong_Sword_01",
 				"Name":"兽怪敲打者",
 				"NameTags":"",
@@ -9957,13 +9972,13 @@ window.Monster_Type_D = {
 				"Title":"兽怪暴徒<br>敲打者",
 				"Type":"异种魔兽",
 				"Desc":"在至冬的诸多兽怪之中，相对壮硕的那类。<br>拥有野兽的力量和类人的躯体，在驱使自身的力量上有一种天然的野性的本能。如果是未经受训练的人类和这种兽怪用武器对峙的话，获胜的毫无疑问将是后者。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Vukodlak_Strong_Sword.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/0/0c/Volkodlak_Basher_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 10, 10, 10, 10]
 				}
 			},
 			70503:{
-				"ID":"25131401",
+				"ID":"51314",
 				"ID_Name":"Vukodlak_Thin_Sword_01_01B",
 				"Name":"兽怪捷掠者",
 				"NameTags":"",
@@ -9973,13 +9988,13 @@ window.Monster_Type_D = {
 				"Title":"兽怪暴徒<br>捷掠者",
 				"Type":"异种魔兽",
 				"Desc":"在至冬的诸多兽怪之中，相对小巧和敏捷的那类。<br>正是因为行为敏捷，而五感要比人类更为敏锐，在战斗中可以依靠直觉躲避很多攻击，在近距离缠斗时是相当麻烦的对手。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Vukodlak_Thin_Sword.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/0/00/Volkodlak_Raider_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 10, 10, 10, 10]
 				}
 			},
 			70504:{
-				"ID":"25131601",
+				"ID":"51316",
 				"ID_Name":"Vukodlak_Thin_Pistol_01",
 				"Name":"兽怪瞄击者",
 				"NameTags":"",
@@ -9989,13 +10004,13 @@ window.Monster_Type_D = {
 				"Title":"兽怪暴徒<br>瞄击者",
 				"Type":"异种魔兽",
 				"Desc":"在至冬的诸多兽怪之中，相对小巧和敏捷的那类。<br>拥有比人类更敏锐的感官，不管是对于风速的感受，还是在特定环境下的视力都成为了他们独有的优势，能让他们在进行远距离的弓弩或火炮射击时命中率要远远高于常人。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Vukodlak_Thin_Pistol.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/2/24/Volkodlak_Sharpshooter_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 10, 10, 10, 10]
 				}
 			},
 			70505:{
-				"ID":"25132601",
+				"ID":"51326",
 				"ID_Name":"Volkodlak_Sheepdog_01",
 				"Name":"狮獒护卫",
 				"NameTags":"",
@@ -10005,13 +10020,13 @@ window.Monster_Type_D = {
 				"Title":"兽怪暴徒<br>狮獒护卫",
 				"Type":"异种魔兽",
 				"Desc":"平时看上去有些慵懒的犬类氏族的兽怪。<br>在诸多不同种类的兽怪氏族中，犬类氏族的名声总是会更好一些，它们忠诚、友好、大多数时候性格相对温顺。但是当宣誓效忠的对象或是熟识的朋友陷入危险之时，则会以狂暴的姿态击倒被视为敌人的对象。<br>据说在从前的战争中，他们的氏族曾为了他们的王抵抗沙皇陛下直到最后一刻，却因此获得了沙皇陛下的青睐。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Sheepdog.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/2/20/Leomastiff_Guard_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 10, 10, 10, 10]
 				}
 			},
 			70506:{
-				"ID":"25132701",
+				"ID":"51327",
 				"ID_Name":"Volkodlak_Arctichare_01",
 				"Name":"长耳强袭者",
 				"NameTags":"",
@@ -10021,13 +10036,13 @@ window.Monster_Type_D = {
 				"Title":"兽怪暴徒<br>长耳强袭者",
 				"Type":"异种魔兽",
 				"Desc":"平时将纤细的身躯藏在斗篷之下隐秘行动的兽怪。<br>据说从前，掌握了创生权能的黄金城的工匠们为诸多目的打造妖灵的身躯，而此等类型的兽怪本为测试繁育能力的极限所造。<br>只不过在经历令那黄金的国度都化作遗迹的打击之后，长耳的一族因族众甚多残留到了今日。<br>如今，他们已是自己身躯的主人。而在雪地也能灵巧活动的敏捷，令他们成为了穿越雪原的人们需要小心应对的威胁。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Arctichare.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/8/89/Long-Eared_Striker_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 10, 10, 10, 10]
 				}
 			},
 			70507:{
-				"ID":"25132801",
+				"ID":"51328",
 				"ID_Name":"Volkodlak_Beaver_01",
 				"Name":"渠道联络人",
 				"NameTags":"",
@@ -10037,13 +10052,13 @@ window.Monster_Type_D = {
 				"Title":"兽怪暴徒<br>渠道联络人",
 				"Type":"异种魔兽",
 				"Desc":"将手砲伪装成树干的狡猾兽怪。<br>因为擅长对手头上的武器和货物进行伪装，所以经常被委托进行运送货物或者传递情报之类的工作。<br>手中的手砲想必也是利用闲暇之余制作的吧。有的时候也会用手砲发射伪装成烟花的信号弹。<br>不要被其外表欺骗，实则是相当精明和狡猾的妖精。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Beaver.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/2/20/Channel_Contact_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 10, 10, 10, 10]
 				}
 			},
 			70508:{
-				"ID":"25133601",
+				"ID":"51336",
 				"ID_Name":"Volkodlak_Mammoth_01",
 				"Name":"牙兽狂徒",
 				"NameTags":"",
@@ -10054,13 +10069,13 @@ window.Monster_Type_D = {
 				"Title":"气魄千钧的迷兽<br>牙兽狂徒",
 				"Type":"异种魔兽",
 				"Desc":"由于继承更多的血脉中的伟力，变得极为强大的兽怪。<br>在诸多不同的兽怪之中，形如巨象或猛犸的兽怪也是血脉最为高贵的一类。从前他们的氏族中多是了不起的战将，其中许多甚至是兽之王的长随。<br>只不过个体力量越是强大，寿命越是悠久的妖精，就越发难以构成族群。相较其他兽怪，在如今的至冬，这类兽怪要罕见许多。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Mammoth.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/9/90/Fanged_Zealot_Icon.png",
 				"RES":{
 					"常态":	[30, 10, 10, 10, 10, 10, 10, 10]
 				}
 			},
 			70509:{
-				"ID":"25133701",
+				"ID":"51337",
 				"ID_Name":"Volkodlak_Greyhound_01",
 				"Name":"嗥狼追猎者",
 				"NameTags":"",
@@ -10071,41 +10086,44 @@ window.Monster_Type_D = {
 				"Title":"气魄千钧的迷兽<br>嗥狼追猎者",
 				"Type":"异种魔兽",
 				"Desc":"由于继承更多的血脉中的伟力，变得极为强大的兽怪。<br>其曾经的氏族曾一度昌盛到能够在兽之王的麾下独立成军，而在白沙皇作为苍星王廷的主人统一冻土全境之后，在战争中没有太大损失的氏族却不被信任，逐渐衰落，于冰之女皇登临王座时期离开了至冬权力的中心。如今群狼的兽怪大多寓居于雪原与山林之中。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Greyhound.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/5/57/Voywolf_Hunter_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 30, 10, 10, 10, 10]
 				}
 			},
 			70510:{
-				"ID":"25137001",
+				"ID":"51370",
 				"ID_Name":"Leshy_Mature_01",
 				"Name":"苍遒的木灵长",
 				"NameTags":"",
 				"HP":"4",
 				"HPType":"2",
 				"HPShow":"4.0",
-				"Element":"草",
+				"Element":"岩",
 				"Title":"生于林野的树妖<br>苍遒的木灵长",
 				"Type":"异种魔兽",
+				"Behavior":"• 战斗一段时间后，树妖会原地进行「扎根」，同时展开 @34%# 生命值的护罩，持续 @10s#， 护盾存在期间，<Fire>火元素抗性#降低 @200%#；期间@命中树妖胸口的黄色晶体#「树心」时就可以中断「扎根」，中断时若树妖身上有<Fire>火元素附着#，那么树妖将受到 @34%# 生命值的<Fire>火元素真伤#，但无附着。<br>• 「扎根」成功后，树妖将恢复 @34%# 生命值，且获得 @30s# 的「灵髓」效果：树妖身上的晶体变得更鲜艳，近战攻击造成岩元素伤害。<br><br>「星烁反应」影响效果：<br>• 「扎根」将使其摔倒，但不中断进程，同时「树心」会降至低位，更容易击中。",
 				"Desc":"生长在林野之中的树妖。<br>只有残缺灵智亦无法开口的树妖，看上去就如同黄金国的工匠们早期实验的结果。但是恰恰相反，根据记载，他们在几乎已经完全掌握了生命的权能后，才造出了这一种族的妖精。<br>或许其中包含着现在的妖精与人无法参透的真意吧。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Leshy_Mature_01.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/5/59/Rugged_Elder_Leshy_Icon.png",
 				"RES":{
-					"常态":	[-20, 10, 10, 10, 10, 30, 30, 10]
+					"常态":	[-20, 10, 10, 10, 10, 30, 30, 10],
+					"护盾":	[-220, 10, 10, 10, 10, 30, 30, 10]
 				}
 			},
 			70511:{
-				"ID":"25138001",
+				"ID":"51380",
 				"ID_Name":"Leshy_Normal_01",
 				"Name":"幼嫩的分节树",
 				"NameTags":"",
 				"HP":"1",
 				"HPType":"2",
 				"HPShow":"1.0",
-				"Element":"草",
+				"Element":"岩",
 				"Title":"生于林野的树妖<br>幼嫩的分节树",
 				"Type":"异种魔兽",
+				"Behavior":"• 战斗一段时间后，树妖会原地进行「扎根」，同时展开 @17%# 生命值的护罩，持续 @3s#；期间@命中树妖胸口的黄色晶体#「树心」时就可以中断「扎根」，与大树妖不同，小树妖的扎根时间更短，更高效。<br>• 「扎根」成功后，树妖将恢复 @17%# 生命值，且获得「岩息」效果：树妖身上的晶体变得更鲜艳，近战攻击造成岩元素伤害，施放一次技能后移除该效果。<br><br>「星烁反应」影响效果：<br>• 部分技能会受影响，拖行时会被中断，趴倒在地。",
 				"Desc":"生长在林野之中的树妖。<br>在至冬的诸多妖精中，树妖也是极为特殊的一种，它几乎很少出现在城市中。在诸多妖精之中，树妖或许是最为长寿的，很少有长生的其他种族见证过树妖的一生。不过大多数人可能连分辨树妖中的个体都做不到吧。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Leshy_Normal_01.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/3/31/Juvenile_Tree_Segment_Icon.png",
 				"RES":{
 					"常态":	[-20, 10, 10, 10, 10, 20, 20, 10]
 				}
@@ -10481,7 +10499,7 @@ window.Monster_Type_E = {
 		"Version":"7.0：至冬",
 		"Monsters":{
 			70601:{
-				"ID":"26310101",
+				"ID":"63101",
 				"ID_Name":"Monster_Chimera_BeetleLion",
 				"Name":"嵌合鍪甲兽",
 				"NameTags":"",
@@ -10491,14 +10509,15 @@ window.Monster_Type_E = {
 				"Element":"岩",
 				"Title":"嵌合兽<br>嵌合鍪甲兽",
 				"Type":"异种魔兽",
+				"Behavior":"「星烁反应」影响效果：<br>• 蓄力会被打断，掉落 @2# 枚<Rock>岩元素微粒#，并削弱相应的部位，使其之后将不再能施放这些技能。",
 				"Desc":"冻土之上一度盛行的生物炼金的产物，异种合成魔兽。<br>四足的猛兽如若拥有如鬼兜虫般的甲壳和撞角，说不定能够成为冲破敌对军势的奇兵。<br>按理说这种追求单一功能的合成魔兽很少能够真的在自然界生存，大多数在失去了其运用的场所后就将因为违背自然的规律而消亡死去，但显然鍪甲兽并不在此列。<br>如今，至冬的冻土上，倒是经常能看到鍪甲兽成群结对狩猎的身影。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Chimera_BeetleLion.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/9/9f/Chimeric_Armored_Beast_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 10, 20, 10, 10]
 				}
 			},
 			70602:{
-				"ID":"26310201",
+				"ID":"63102",
 				"ID_Name":"Monster_Chimera_OwlPangolin",
 				"Name":"嵌合梭地兽",
 				"NameTags":"",
@@ -10508,14 +10527,15 @@ window.Monster_Type_E = {
 				"Element":"雷",
 				"Title":"嵌合兽<br>嵌合梭地兽",
 				"Type":"异种魔兽",
+				"Behavior":"「星烁反应」影响效果：<br>• 蓄力会被打断，掉落 @2# 枚<Elec>雷元素微粒#，并削弱相应的部位，使其之后将不再能施放这些技能。",
 				"Desc":"冻土之上一度盛行的生物炼金的产物，异种合成魔兽。<br>穿梭于土地与冰雪中的魔物如果拥有了在阴影中看清一切的视觉，是否能够成为更为强大的捕猎者呢？<br>实验的结果居然超乎寻常的成功，这种梭地兽会在夜晚穿梭于地表之下，在黑暗中挖掘陷阱或是躲在暗处狩猎。<br>据《先驱报》的报道所述，曾有在彩冰镇生活的工人看到过几乎有两人高的巨大梭地兽…不过应该是无稽之谈吧。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Chimera_OwlPangolin.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/9/9e/Chimeric_Burrowbeast_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 20, 10, 10, 10, 10, 10]
 				}
 			},
 			70603:{
-				"ID":"26310301",
+				"ID":"63103",
 				"ID_Name":"Monster_Chimera_ElephantBird",
 				"Name":"嵌合翼象兽",
 				"NameTags":"",
@@ -10525,14 +10545,15 @@ window.Monster_Type_E = {
 				"Element":"风",
 				"Title":"嵌合兽<br>嵌合翼象兽",
 				"Type":"异种魔兽",
+				"Behavior":"「星烁反应」影响效果：<br>• 蓄力会被打断，掉落 @2# 枚<Wind>风元素微粒#，并削弱相应的部位，使其之后将不再能施放这些技能。",
 				"Desc":"冻土之上一度盛行的生物炼金的产物，异种合成魔兽。<br>拥有翅膀的矮足象大概可以不受地理条件的限制进行迁移，并且也能满足摘取更高处果实的需求。<br>仅仅是出于这个目的，制造者便制造出了这样的合成魔兽。在后来抵抗漆黑兽潮的战争之中，嵌合翼象兽与风仙共同进行着情报工作，保证了白沙皇进军时军令的畅通无阻。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Chimera_ElephantBird.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/c/c1/Chimeric_Winged_Elephant_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 20, 10, 10, 10]
 				}
 			},
 			70604:{
-				"ID":"26310401",
+				"ID":"63104",
 				"ID_Name":"Monster_Chimera_BearDeer_01",
 				"Name":"嵌合角熊",
 				"NameTags":"",
@@ -10542,14 +10563,15 @@ window.Monster_Type_E = {
 				"Element":"火",
 				"Title":"嵌合兽<br>嵌合角熊",
 				"Type":"异种魔兽",
+				"Behavior":"「星烁反应」影响效果：<br>• 蓄力会被打断，掉落 @4# 枚<Fire>火元素微粒#，并摧毁相应的部位，使其之后将不再能施放这些技能。",
 				"Desc":"生物炼金的产物，成型十分特殊的合成魔兽。<br>并未按照人工的设想，而是通过生命切片自行组合形成的合成魔物，因此甚至有了一些自如使用元素力的神异。<br>生命即便破碎到了几乎只剩切片的地步，也有什么意念与伟力令他们按照某种神秘的规划生长吗？<br>这答案到了如今或许已然无人知晓。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Chimera_BearDeer.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/5/56/Chimeric_Horned_Bear_Icon.png",
 				"RES":{
 					"常态":	[30, 10, 10, 10, 10, 10, 10, 10]
 				}
 			},
 			70605:{
-				"ID":"25130101",
+				"ID":"51301",
 				"ID_Name":"Human_Girl_Vila_Glaive_01",
 				"Name":"持戟羽骑士",
 				"NameTags":"",
@@ -10559,14 +10581,15 @@ window.Monster_Type_E = {
 				"Element":"风",
 				"Title":"灵翼飞旋的风仙<br>持戟羽骑士",
 				"Type":"异种魔兽",
+				"Behavior":"「星烁反应」影响效果：<br>• 蓄力射击会被打断，并被击飞。",
 				"Desc":"生有双翼，能于空中飞行的风仙。<br>根据记载，风仙一族曾于女皇登基后的百年中经历过了不少动荡的时期。其中，据说有不满女皇针对妖精贵族的政策而掀起小规模叛乱的妖灵。<br>叛乱倒是很快就被平息，不过发起叛乱的是昔日风仙贵族的后裔，这件事一度导致了风仙族群的大规模分化。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Human_Girl_Vila_Glaive.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/7/70/Winged_Halberd-Knight_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 20, 10, 10, 10]
 				}
 			},
 			70606:{
-				"ID":"25130201",
+				"ID":"51302",
 				"ID_Name":"Human_Boy_Vila_Blade_01",
 				"Name":"舞空羽骑士",
 				"NameTags":"",
@@ -10576,14 +10599,15 @@ window.Monster_Type_E = {
 				"Element":"风",
 				"Title":"灵翼飞旋的风仙<br>舞空羽骑士",
 				"Type":"异种魔兽",
+				"Behavior":"「星烁反应」影响效果：<br>• 蓄力射击会被打断，并被击飞。",
 				"Desc":"生有双翼，能于空中飞行的风仙。<br>据说风仙一族是在白沙皇开始统一整个冻土之时就跟随在其后的妖精氏族。在空中短暂飞翔的能力，让他们有相当灵活的机动性。作为斥候探查敌群，或是进行长距离的奔袭都不在话下。<br>白沙皇时期组建的亲卫「冬契军」，其中大部分成员都是风仙。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Human_Girl_Vila_Blade.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/1/14/Winged_Soarer_Knight_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 20, 10, 10, 10]
 				}
 			},
 			70607:{
-				"ID":"25135001",
+				"ID":"51350",
 				"ID_Name":"Human_Female_Staff_Snegurochka_01",
 				"Name":"凝冰秘法师",
 				"NameTags":"",
@@ -10593,14 +10617,15 @@ window.Monster_Type_E = {
 				"Element":"冰",
 				"Title":"凝冰而造的雪精<br>凝冰秘法师",
 				"Type":"异种魔兽",
+				"Behavior":"• 雪精在低于 @50%# 生命值时，会将自己封入「冰棺」，「冰棺」拥有 <Ice>8U 冻元素护罩#，@16s# 后解除，同时恢复 @50%# 生命值。若「冰棺」被击破，那么雪精将被直接击败。<br>• 每个雪精的「冰棺」只会触发一次。<br><br>「星烁反应」影响效果：<br>• 「冰棺」将被<Elec>雷#/<Wind>风#元素克制，<Elec>雷#/<Wind>风#元素对其触发反应的消耗比变为 @1：4#，<Fire>火元素#对其触发反应的消耗比变为 @1：1#。",
 				"Desc":"于冰雪之中，为爱而生的雪精。<br>雪精中的女性被称呼为雪孃，其中的大多数生来都是能够自由运用冰雪之力的法师。传说雪精在受造时灵魂残缺，需要爱上人类以令自身达成完美。<br>但是达成完美之后的雪精是否仍然需要爱呢？或许答案是否定的。<br>这也是诸多雪精与人类相爱的故事最后却都以悲剧收尾的原因吧。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Human_Female_Staff_Snegurochka.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/f/f3/Glaciomancer_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 30, 10, 10, 10, 10]
 				}
 			},
 			70608:{
-				"ID":"25135101",
+				"ID":"51351",
 				"ID_Name":"Snegurochka_Male_01",
 				"Name":"凝冰戍卫",
 				"NameTags":"",
@@ -10610,8 +10635,9 @@ window.Monster_Type_E = {
 				"Element":"冰",
 				"Title":"凝冰而造的雪精<br>凝冰戍卫",
 				"Type":"异种魔兽",
+				"Behavior":"• 雪精在低于 @50%# 生命值时，会将自己封入「冰棺」，「冰棺」拥有 <Ice>16U 冻元素护罩#，@16s# 后解除，同时恢复 @50%# 生命值。若「冰棺」被击破，那么雪精将被直接击败。<br>• 每个雪精的「冰棺」只会触发一次。<br><br>「星烁反应」影响效果：<br>• 「冰棺」将被<Elec>雷#/<Wind>风#元素克制，<Elec>雷#/<Wind>风#元素对其触发反应的消耗比变为 @1：4#，<Fire>火元素#对其触发反应的消耗比变为 @1：1#。",
 				"Desc":"于冰雪之中，为爱而生的雪精。<br>雪精中的男性是天然的骑士，其中的大多数生来都能够自由利用冰雪凝造自己的武器。<br>传说在白沙皇抵抗漆黑蚀流的战役中，有作为其护卫的雪精催动了不属于这一族群的力量，身形变化得相当巨大。<br>虽然不知其最终的结局为何，但触犯了禁忌，想必不会有太好的后果吧。",
-				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Snegurochka_Male.png",
+				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/1/15/Glacial_Warden_Icon.png",
 				"RES":{
 					"常态":	[10, 10, 10, 30, 10, 10, 10, 10]
 				}
@@ -10904,7 +10930,7 @@ window.Element_Link = {
 		"Geo":"https://static.wikia.nocookie.net/gensin-impact/images/4/4a/Element_Geo.png",
 		"Dendro":"https://static.wikia.nocookie.net/gensin-impact/images/f/f4/Element_Dendro.png",
 	};
-window.Leak_Version="V70";
+window.Leak_Version="";
 
 $.each(Monster_Type_A, function(key, value){
 	if (String(key) === Leak_Version){
