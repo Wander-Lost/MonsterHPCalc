@@ -1080,7 +1080,7 @@ html.han-la ul > hanla {
 }
 
 img.lazyload,img.lazyloading {
-    /* opacity: 0*/
+    opacity: 0.5
 }
 
 img.lazyloaded {
@@ -1418,7 +1418,7 @@ img.lazyloaded {
 	border: 2px solid #555;
     border-radius: 1.2rem;
     background-color: rgb(25, 25, 25, 80%);
-    padding: 1rem;
+    padding: 1rem 1rem 0.4rem 1rem;
 }
 
 .Item_Value {
@@ -1475,6 +1475,12 @@ img.lazyloaded {
 
 .Tips_Mobile{
 	display:none;
+}
+
+p.behavior{
+	text-indent: 0;
+	margin: 8px 0;
+	line-height: 1.4;
 }
 
 @media screen and (max-width: 850px) {
@@ -1541,7 +1547,7 @@ img.lazyloaded {
 	}
 
 	.Item_Behavior{
-		padding: 0.8rem;
+		padding: 0.8rem 0.8rem 0.32rem 0.8rem;
 	}
 }
 
@@ -1563,7 +1569,7 @@ img.lazyloaded {
 	}
 	
 	.Item_Behavior{
-		padding: 0.6rem;
+		padding: 0.6rem 0.6rem 0.24rem 0.6rem;
 	}
 
 }
@@ -2414,10 +2420,10 @@ img.lazyloaded {
 	<br style="user-select: none;">
 	<p class="rank">环境倍率使得原神可以在各类高难模式中动态调整难度，且不影响到敌对生物本身的难度。</p>
 	<ul class="disc-ul">
-		<li class="disc-li"><span class="main">深境螺旋12层：</span>在5.0版本及以前，环境倍率为250%，5.1~5.4版本期间，环境倍率在300%与375%不定，5.5版本后，环境倍率固定为375%。</li>
-		<li class="disc-li"><span class="main">深境螺旋11层：</span>在6.0版本以前，环境倍率为200%，6.0版本及以后调整为250%。</li>
+		<li class="disc-li"><span class="main">深境螺旋12层：</span>在5.0版本及以前，环境倍率为250%；5.1~5.4版本期间，环境倍率在300%与375%不定；5.5版本后，环境倍率固定为375%；7.1版本后，环境倍率调整为475%。</li>
+		<li class="disc-li"><span class="main">深境螺旋11层：</span>在6.0版本以前，环境倍率为200%；6.0版本及以后调整为250%；7.1版本后，环境倍率调整为300%。</li>
 		<li class="disc-li"><span class="main">深境螺旋9-10层：</span>环境倍率为200%。</li>
-		<li class="disc-li"><span class="main">幻想真境剧诗与幽境危战：</span>环境倍率动态变化。</li>
+		<li class="disc-li"><span class="main">幻想真境剧诗与幽境危战：</span>环境倍率动态变化。其中，幽境危战N1~N3环境倍率固定为120%，N4环境倍率固定为400%。</li>
 		<li class="disc-li"><span class="main">多人联机：</span>大世界中联机时，根据队伍中的玩家数量2/3/4，大世界敌对生物环境倍率为150%/200%/250%。幽境危战联机时，额外乘算150%的环境倍率（即保持原环境倍率不变）。</li>
 	</ul>
 	<br style="user-select: none;">
@@ -5332,7 +5338,7 @@ $(function() {
 				if (isNaN(RES_Ratio)) {
 					$errorMsg.show().append(`<br>❌ 抗性输入有误，请更正！`);
 				}
-				const RES_HP = final / (window["Elemental_RES"]((RES_Ratio)/100));
+				const RES_HP = final / (window["Elemental_RES"]((RES_Ratio)/100)) * 0.9;
 				const formattedRES_HP = RES_HP.toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
 				$("#Card_2_RES_"+i+"_Result").text(formattedRES_HP);
 			}
@@ -5441,8 +5447,57 @@ $(function() {
 // 26/07/08 注：7.0 版本的怪物图片链接未来需要改为 Fandom Wiki。注意版本信息、抗性信息改动，以及标题和描述，并加入行为机制。
 // 26/08/14 注：7.0 版本的怪物图片还剩地方传奇、幽境危战链接未来需要改为 Fandom Wiki。现已补充全部 7.0 版本怪物机制。
 // 26/08/20 注：7.0 版本的怪物图片还剩幽境危战链接未来需要改为 Fandom Wiki。补充遗漏的机制，修复重拳出击鸭的抗性。
+// 26/08/24 注：更加详细的补充了冰狼的机制。
+// 26/09/03 注：加入了 7.1 版本幽境危战，将抗性等效生命值变为以 10% 为基准，改动位于“// 抗性”行数 +6（自定义）/ +10（常规），使用说明的环境倍率中增加了一些描述。
+// 26/09/23 注：更加详细的补充了游雪的护刃、危战游雪的护刃、危战火螃蟹的机制。修改了 Fast_Calc 中 11、12 层的环境倍率。行 1422、1481、1550、1572 中修改/加入了新的 style，并修改了行 11217、11221，使怪物介绍、怪物机制介绍每一段话具有间隔。
 
 window.Monster_Type_A = {
+	"V71":{
+		"Version":"7.1：幽境危战 · 烁煌之役",
+		"Monsters":{
+			71001:{
+				"Name":"历经百战的矮灵雕刻师 · 斧凿 / 运斤如风",
+				"HP":"19.253419297",
+				"HPType":"2",
+				"HPShow":"19.25342",
+				"SO5":"550",
+				"SO6":"1200",
+				"Title":"凝造之冰的观想",
+				"Type":"幽境危战",
+				"Behavior":"• 强敌常态 @90%# 全抗<br>• 入战 @9~10s#，以及后续每 @16s#，会开始制作 @2# 个冰雕，制作时间 @4s#，制作成功的冰雕会持续打击场上角色<br>• 若在制作期间使强敌受到@辉映·星烁#的影响，即可将冰雕转化为无害的雕像，该雕像会在 @2.5s# 后自爆，对强敌造成 @500000# 伤害，并为强敌施加 @1# 层降低抗性的效果，每层使强敌<Wind>降低 25% 风抗#，@20% 其他抗#，该效果至多叠加 @3# 层，所有层数持续 @30s#，持续时间一过清除所有层数",
+				"Desc":"拥有千锤百炼的体魄，能将风元素化作斧凿的臻冰雕塑师。<br>在比其审美更为糟糕扭曲的地脉奔流演绎下，这位雕刻师陷入了无可救药的癫狂灵感。他势要以呼啸的狂风雕琢骨肉，用坚不可摧的臻冰封存灵魂，迫不及待地将眼前的所有入侵者，凿刻成这场灾厄展览里的最新杰作。",
+				"ImgLink":"https://api.lunaris.moe/data/assets/leyline/UI_Img_LeyLineChallenge_Karzelek_Tsereteli_01.png",
+				"RES":{
+					"常态<br><span class='main'>困难 / 险恶</span>":[10, 10, 10, 30, 30, 10, 10, 10],
+					"常态<br><span class='main'>无畏 / 绝境</span>":[90, 90, 90, 90, 90, 90, 90, 90],
+					"减抗 1 层<br><span class='main'>无畏 / 绝境</span>":[70, 70, 70, 70, 65, 70, 70, 70],
+					"减抗 2 层<br><span class='main'>无畏 / 绝境</span>":[50, 50, 50, 50, 40, 50, 50, 50],
+					"减抗 3 层<br><span class='main'>无畏 / 绝境</span>":[30, 30, 30, 30, 15, 30, 30, 30],
+				}
+			},
+			71002:{
+				"Name":"游雪的护刃 · 复奏 / 不绝余音",
+				"HP":"13.430120715",
+				"HPType":"2",
+				"HPShow":"13.43012",
+				"SO5":"600",
+				"SO6":"1160",
+				"Element":"冰",
+				"Title":"离群的冰影",
+				"Type":"幽境危战",
+				"Behavior":"• 强敌<Ice>不再拥有 50% 冰抗#，而是 @10%#<br>• 强敌的血量为 @80%# 时，会锁血 @1# 帧，当前动作不会被打断，下个动作会闪现至场地中心并准备开启 <Ice>42U 冰元素护盾#，在闪现后至开启护盾前的蓄力期间全部抗性提升至 @210%#。护盾存在期间使强敌受到 @辉映·星烁# 的影响，会使护盾转化为相当于强敌最大生命值 @15% 的血量盾#，两种护盾共享 @20s# 持续时间<br>• 若护盾未被击破，无论护盾类型，强敌都会@恢复 10% 生命值#，若击破的是冰元素护盾，强敌会损失 @10% 生命值#，若击破的是血量盾，则强敌会损失 @10% 生命值 + 60% 持有护盾期间受到的伤害#，不超过强敌最大生命值的 @19%#，击破两种护盾均会使其瘫痪 @10s#，期间全抗为 @-40%#<br>• 破盾后 @40s#，会再次展开<Ice>冰元素护盾#，若总破盾次数达到 @2#，则之后不再展开护盾<br>• 注：强敌的血量盾实际为屏障，参考深黯魔语之主的机制，打在屏障上的伤害可以触发西风等武器的特效",
+				"Desc":"在雪精一族之中也拥有相当声望的古老雪精，曾被授予「须毕生守护雪精一族」的重任。<br>在地脉洪流的错乱影响下，其名为「守护」的空洞执妄仅余杀戮的本能，她潜藏于冰棺的阴影下，随时准备化作一道不可捉摸的凌厉冰剑，撕裂一切试图靠近的生命。",
+				"ImgLink":"https://api.lunaris.moe/data/assets/leyline/UI_Img_LeyLineChallenge_Snegurochka_Contessa_02.png",
+				"RES":{
+					"常态<br><span class='main'>困难 / 险恶</span>":	[10, 10, 10, 50, 10, 10, 10, 10],
+					"瘫痪<br><span class='main'>困难 / 险恶</span>":	[-40,-40,-40, 0,-40,-40,-40,-40],
+					"常态<br><span class='main'>无畏 / 绝境</span>":	[10, 10, 10, 10, 10, 10, 10, 10],
+					"蓄力<br><span class='main'>无畏 / 绝境</span>":	[210,210,210,210,210,210,210,210],
+					"瘫痪<br><span class='main'>无畏 / 绝境</span>":	[-40,-40,-40,-40,-40,-40,-40,-40],
+				}
+			},
+		}	
+	},
 	"V70":{
 		"Version":"7.0：幽境危战 · 星芒之役",
 		"Monsters":{
@@ -5546,7 +5601,7 @@ window.Monster_Type_A = {
 				"Element":"冰",
 				"Title":"离群桀兽",
 				"Type":"幽境危战",
-				"Behavior":"• 「先祖狼魂」<Ice>24U 冰盾# <br>• 「先祖狼魂」被击败后，强敌损失「先祖狼魂」所受到的@ 60% #火元素伤害，@60%# 风元素伤害，@10%# 其他伤害，不超过强敌最大生命值的 @40%#，破盾后强敌@全抗降低-70%#",
+				"Behavior":"• 入战 5 秒后会展开等同于自身 @300%# 生命值的血量护盾，但不会提升抗性，并召唤「先祖狼魂」<br>• 「先祖狼魂」<Ice>24U 冰盾#，且仅可被<Fire>火#<Elec>雷#<Wind>扩散#反应削减护盾值，护盾被击破后，同时移除强敌的血量护盾<br>• 「先祖狼魂」被击败后，强敌损失「先祖狼魂」所受到的@ 60% #火元素伤害，@60%# 风元素伤害，@10%# 其他伤害，不超过强敌最大生命值的 @40%#，破盾后强敌@全抗降低 70%#",
 				"Desc":"与当地狼群格格不入的孤狼，碧色的鬃毛昭示着它的血统来自遥远的异乡。<br>在地脉能量狂乱的激荡中，先祖的记忆已然扭曲为可怕的诅咒。极寒的恨意浸透了它的身躯，正无情地驱动着这头野兽，去撕碎其所能看到的一切。",
 				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/7/76/Battle-Hardened_Glacial_Wolf_Stygian_Onslaught_Preview.png",
 				"RES":{
@@ -5792,7 +5847,7 @@ window.Monster_Type_A = {
 				"Element":"火",
 				"Title":"山峦之下鼓动的热潮",
 				"Type":"幽境危战",
-				"Behavior":"• 具有 <Fire>64U 火元素器官#「熔火双角」，使全部抗性提升 @150%# ，破坏后损失 @10%# 生命值<br>• 会召唤「坚盾重甲蟹」，其具有 <Fire>12U 火元素#，火元素被耗尽时将失控撞向首领，使其损失 @12U# 火元素<br>• 首领被撞时还会基于「坚盾重甲蟹」受到的伤害损失生命值，等同于其受到的 @60%# 水元素伤害 + @10%# 非水元素伤害，不超过首领 @15%# 生命值",
+				"Behavior":"• 具有 <Fire>64U 火元素器官#「熔火双角」，@免疫由<Wind>扩散反应#造成的盾量削减#，使全部抗性提升 @150%# ，破坏后损失 @10%# 生命值<br>• 会召唤至多 3 只「坚盾重甲蟹」，并尽可能的维持 3 只，其具有 <Fire>12U 火元素#，火元素被耗尽时将失控撞向首领，使其损失 @12U# 火元素<br>• 首领被撞时还会基于「坚盾重甲蟹」受到的伤害损失生命值，等同于其受到的 @60%# 水元素伤害 + @10%# 非水元素伤害，不超过首领 @15%# 生命值",
 				"Desc":"矗立在原海异种顶端的两位霸主之一，曾经是海员之间的逸闻。不遇天敌，能够一直狩猎、进食的重甲蟹会随着成长，不断寻找适合的螺与贝壳，作为新的甲胄。<br>经由地脉乱象的扭曲演绎，它凶横的身姿已化作小型军队，对目之所及的事物大张挞伐，仿若一场会移动的蟹形凶灾…",
 				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/4/41/Emperor_of_Fire_and_Iron_Stygian_Onslaught_Preview.png",
 				"RES":{
@@ -6263,6 +6318,7 @@ window.Monster_Type_B = {
 		"Version":"6.7：挪德卡莱 · 杜南纳深坑 / 霜月",
 		"Monsters":{
 			67101:{
+				"ID":"24090701",
 				"Name":"「穆什特希尔」",
 				"NameTags":"地方传奇 · ",
 				"HP":"45",
@@ -6281,6 +6337,7 @@ window.Monster_Type_B = {
 				}
 			},
 			67201:{
+				"ID":"40907",
 				"Name":"历经百战的先驱秘源统辖阵列",
 				"NameTags":"",
 				"HP":"9.855",
@@ -6299,6 +6356,7 @@ window.Monster_Type_B = {
 				}
 			},
 			67102:{
+				"ID":"20012301",
 				"Name":"虹彩史莱姆",
 				"NameTags":"地方传奇 · ",
 				"HP":"61.6",
@@ -6315,6 +6373,7 @@ window.Monster_Type_B = {
 				}
 			},
 			67202:{
+				"ID":"123",
 				"Name":"历经百战的虹彩史莱姆",
 				"NameTags":"",
 				"HP":"15.4",
@@ -6336,6 +6395,7 @@ window.Monster_Type_B = {
 		"Version":"6.5：蒙德 · 风息山 / 空之神殿",
 		"Monsters":{
 			65101:{
+				"ID":"21030801",
 				"Name":"丘尔德里克",
 				"NameTags":"地方传奇 · ",
 				"HP":"40",
@@ -6355,6 +6415,7 @@ window.Monster_Type_B = {
 				}
 			},
 			65201:{
+				"ID":"10308",
 				"Name":"历经百战的丘丘萨满",
 				"NameTags":"",
 				"HP":"10",
@@ -6374,6 +6435,7 @@ window.Monster_Type_B = {
 				}
 			},
 			65102:{
+				"ID":"26120501",
 				"Name":"摩诃婆苏提婆耶弗太子",
 				"NameTags":"地方传奇 · ",
 				"HP":"44.1",
@@ -6391,6 +6453,7 @@ window.Monster_Type_B = {
 				}
 			},
 			65202:{
+				"ID":"61205",
 				"Name":"历经百战的陆行岩本真蕈",
 				"NameTags":"",
 				"HP":"257.233936",
@@ -7839,6 +7902,30 @@ window.Monster_Type_B = {
 }
 
 window.Monster_Type_C = {
+	"V71":{
+		"Version":"7.1：至冬 · 霜殛寒峰",
+		"Monsters":{
+			71401:{
+				"ID":"51352",
+				"ID_Name":"Monster_Snegurochka_Contessa_01",
+				"Name":"游雪的护刃",
+				"NameTags":"",
+				"HP":"13.5",
+				"HPType":"2",
+				"HPShow":"13.5",
+				"Element":"冰",
+				"Title":"离群的冰影",
+				"Type":"异种魔兽",
+				"Behavior":"• 低于 @50%# 生命值时，会在 @10s# 后将自己封存入「冰棺」，至多进行一次。<br>• 冰棺具有<Ice> 40U 冻元素护盾#，破除后所有抗性降低 @50%# ，持续 @16s# 。大世界版本为<Ice> 20U #。@16s# 内未能破除，则恢复 @20%# 生命值。<br><br>「星烁反应」影响效果：<br>• 「冰棺」将被<Elec>雷#/<Wind>风#元素克制，<Elec>雷#/<Wind>风#元素对其触发反应的消耗比变为 @1：4#，<Fire>火元素#对其触发反应的消耗比变为 @1：1#。",
+				"Desc":"在雪精一族之中也拥有相当声望的古老雪精。<br>曾经跟随过那位有着猩红恶名的传说中的大雪孃，被授予「须毕生守护雪精一族」的重任，当时被授予这重任的据说共有七位，如今只剩下她。在每一次雪精的王公交替时，都必须由她亲眼见证。<br>在如今的雪孃王公上位之后，或是出于理念的不一致，离开了雪精们的山中之馆。",
+				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Snegurochka_Contessa_02.png",
+				"RES":{
+					"常态":	[10, 10, 10, 50, 10, 10, 10, 10],
+					"瘫痪":	[-40,-40,-40, 0,-40,-40,-40,-40],
+				}
+			},
+		}
+	},
 	"V70":{
 		"Version":"7.0：至冬 · 永凝冻土 / 古兽冰原",
 		"Monsters":{
@@ -11081,12 +11168,12 @@ window.Fast_Calc = {
 	"SO4":[100,400],
 	"SO5":[105,100],
 	"SO6":[110,100],
-	"SA111":[88,250],
-	"SA112":[90,250],
-	"SA113":[92,250],
-	"SA121":[95,375],
-	"SA122":[98,375],
-	"SA123":[100,375],
+	"SA111":[88,300],
+	"SA112":[90,300],
+	"SA113":[92,300],
+	"SA121":[95,475],
+	"SA122":[98,475],
+	"SA123":[100,475],
 	"WL6":[83,100],
 	"WL8":[93,100],
 	"WL9":[103,100],
@@ -11123,11 +11210,11 @@ function Card_01_Monster(Dict_ID,Version,Monster_id){
 	} else {
 		$("#Card_1_Monster_Type_Box").hide();
 	}
-	$("#Card_1_Monster_Desc, #Card_1_Monster_Desc_2").html(Monster_Data["Desc"]);
+	$("#Card_1_Monster_Desc, #Card_1_Monster_Desc_2").html("<p>" + Monster_Data["Desc"].replace(/<br>/g, '</p><p>') + "</p>");
 	$("#Card_1_Monster_HP").val(parseFloat(Monster_Data["HP"]));
 	$("#Card_1_Monster_HPType").val(parseInt(Monster_Data["HPType"]));
 	if (Monster_Data["Behavior"] !== undefined) {
-		$("#Card_1_Monster_Behavior").html('<div style="margin-bottom: 10px;"><span class="SU_Icon SU_Icon_Pro">怪物机制</span></div>'+ Monster_Data["Behavior"].replace(/#/g, "</b></color>").replace(/@/g, "<color style='color:#a2b7f4;'><b>").replace(/<Rock>/g, "<color style='color:"+Element_Color["岩"]+";'><b>").replace(/<Grass>/g, "<color style='color:"+Element_Color["草"]+";'><b>").replace(/<Water>/g, "<color style='color:"+Element_Color["水"]+";'><b>").replace(/<Ice>/g, "<color style='color:"+Element_Color["冰"]+";'><b>").replace(/<Fire>/g, "<color style='color:"+Element_Color["火"]+";'><b>").replace(/<Elec>/g, "<color style='color:"+Element_Color["雷"]+";'><b>").replace(/<Wind>/g, "<color style='color:"+Element_Color["风"]+";'><b>"));
+		$("#Card_1_Monster_Behavior").html('<div style="margin-bottom: 10px;"><span class="SU_Icon SU_Icon_Pro">怪物机制</span></div><p class="behavior">'+ Monster_Data["Behavior"].replace(/#/g, "</b></color>").replace(/@/g, "<color style='color:#a2b7f4;'><b>").replace(/<Rock>/g, "<color style='color:"+Element_Color["岩"]+";'><b>").replace(/<Grass>/g, "<color style='color:"+Element_Color["草"]+";'><b>").replace(/<Water>/g, "<color style='color:"+Element_Color["水"]+";'><b>").replace(/<Ice>/g, "<color style='color:"+Element_Color["冰"]+";'><b>").replace(/<Fire>/g, "<color style='color:"+Element_Color["火"]+";'><b>").replace(/<Elec>/g, "<color style='color:"+Element_Color["雷"]+";'><b>").replace(/<Wind>/g, "<color style='color:"+Element_Color["风"]+";'><b>").replace(/<br>•/g, '</p><p class="behavior">•').replace(/<br>/g, '</p><p class="behavior">&nbsp;&nbsp;&nbsp;') +'</p>');
 		$("#Card_1_Monster_Behavior").show();
 	} else {
 		$("#Card_1_Monster_Behavior").text("");
@@ -11259,7 +11346,7 @@ $(function(){
 				if (isNaN(RES_Value)){
 					$("#Monster_RES_HP_"+i).text("-");
 				} else {
-					const RES_HP = final / (window["Elemental_RES"]((RES_Value)/100));
+					const RES_HP = final / (window["Elemental_RES"]((RES_Value)/100)) * 0.9;
 					const formattedRES_HP = RES_HP.toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
 					$("#Monster_RES_HP_"+i).text(formattedRES_HP);
 				}
