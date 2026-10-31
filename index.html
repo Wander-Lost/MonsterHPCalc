@@ -462,6 +462,8 @@ hr {
 p.rank{
 	line-height:1.6; 
 	margin: 0;
+	letter-spacing: .01em;
+    text-align: justify;
 }
 
 p.Read{
@@ -976,6 +978,9 @@ html.han-la ul > hanla {
 
 .disc-li {
     list-style-type: disc;
+	line-height: 1.6;
+	letter-spacing: .01em;
+    text-align: justify;
 }
 
 .DOM_Button_Confirm{
@@ -1413,6 +1418,8 @@ img.lazyloaded {
 	text-align:left;
 	margin:20px 0px 0px 0px;
 	width:90%;
+	letter-spacing: .01em;
+    text-align: justify;
 }
 
 .Item_Behavior{
@@ -1482,6 +1489,12 @@ p.behavior{
 	text-indent: 0;
 	margin: 8px 0;
 	line-height: 1.4;
+	letter-spacing: .01em;
+    text-align: justify;
+}
+
+span.Item_HPCalc {
+	display:none;
 }
 
 @media screen and (max-width: 850px) {
@@ -1781,6 +1794,7 @@ p.behavior{
 	font-weight: 800;
 	word-break: break-word;
 	margin: 0.4rem 0;
+	letter-spacing: 1px;
 }
 
 .Calc_Detail {
@@ -1853,6 +1867,38 @@ p.behavior{
 	vertical-align: middle;
 }
 
+.Table_Update{
+	border:none;
+	background: rgba(98, 98, 98, 50%);
+    border-radius: 1.6rem;
+	width:95%; 
+	margin-top: 12px;
+	margin-bottom: 20px;
+	padding:10px;
+}
+
+.Table_Update tr{
+	height: 40px;
+}
+
+.Table_Update th{
+	color:#a2b7f4;
+	background-color:unset;
+	border-bottom: 1px solid #bebbb8;
+}
+
+.Table_Update td{
+	background-color:unset;
+	border-bottom: 1px solid #bebbb8;
+	text-align:left;
+	padding:5px 10px;
+}
+
+.Table_Update tr:first-child th {
+	border-bottom: 2px solid #bebbb8;
+	background: rgba(98, 98, 98, 50%);
+}
+
 @media screen and (max-width: 800px) {
 	.Calc_Body{
 		display: flex;
@@ -1879,6 +1925,11 @@ p.behavior{
 	}
 	
 	.Table_RES_HP{
+		width:100%; 
+		padding:5px;
+	}
+
+	.Table_Update{
 		width:100%; 
 		padding:5px;
 	}
@@ -1989,7 +2040,7 @@ p.behavior{
 		<a href="javascript:void(0)" id="Card_Page_3_Link" onclick="Card_Page_3_Show()">使用说明</a>
 	</div>
 	<div class="dropdown">
-		<button class="dropbtn DOM_Button_Confirm" style="position: absolute; top:10px; right:10px;">选项</button>
+		<button class="dropbtn DOM_Button_Confirm" style="position: absolute; top:10px; right:10px;">选项与功能</button>
 		<div class="dropdown-content" style="top:45px; right:10px;">
 			<div class="maxhide">
 				<a href="javascript:void(0)" id="Card_Page_1_Link_2" onclick="Card_Page_1_Show()">常规计算</a>
@@ -1997,7 +2048,7 @@ p.behavior{
 				<a href="javascript:void(0)" id="Card_Page_3_Link_2" onclick="Card_Page_3_Show()">使用说明</a>
 				<hr class="SU_hr">
 			</div>
-			<a href="javascript:void(0)" onclick="show_leak()">测试按钮</a>
+			<a href="javascript:void(0)" onclick="switch_hp_show()"><span class="Item_BaseHP">显示常规生命</span><span class="Item_HPCalc">显示基础生命</span></a>
 			<a href="javascript:void(0)" onclick="gettotop()">回到顶部</a>
 		</div>
 	</div>
@@ -2387,6 +2438,7 @@ p.behavior{
 		<li class="disc-li">米游社：<a title="米游社" href="https://www.miyoushe.com/ys/collection/3572896" target="_blank"><span class="main"><u>合集 - 原魔图鉴存放合集-原神社区-米游社</u></span></a></li>
 	</ul>
 	<br style="user-select: none;">
+	
 	<hr class="SU_hr">
 	<br style="user-select: none;">
 	<h4 align=center><span class="SU_Icon SU_Icon_Pro">等级系数、基础生命与相对基础生命</span></h4>
@@ -2428,6 +2480,7 @@ p.behavior{
 			</tr>
 		</table>
 	</div>
+	
 	<hr class="SU_hr">
 	<br style="user-select: none;">
 	<h4 align=center><span class="SU_Icon SU_Icon_Pro">环境倍率</span></h4>
@@ -2441,16 +2494,158 @@ p.behavior{
 		<li class="disc-li"><span class="main">多人联机：</span>大世界中联机时，根据队伍中的玩家数量2/3/4，大世界敌对生物环境倍率为150%/200%/250%。幽境危战联机时，额外乘算150%的环境倍率（即保持原环境倍率不变）。</li>
 	</ul>
 	<br style="user-select: none;">
+	
 	<hr class="SU_hr">
 	<br style="user-select: none;">
 	<h4 align=center><span class="SU_Icon SU_Icon_Pro">抗性乘区</span></h4>
 	<br style="user-select: none;">
 	<p class="rank">抗性作用于抗性乘区，是一段分段函数。根据抗性计算的相对生命值，为该抗性条件下，强行击杀该敌对生物所需的输出量。</p>
-	<ul class="disc-ul">
+	<ul class="disc-ul" style="margin-left: 1em;">
 		<li class="disc-li" style="max-width: 500px; overflow-x: auto;">
 			<math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi> 抗性伤害率 </mi><mo>=</mo><mrow><mo fence="true">{</mo><mtable rowspacing="0.3599999999999999em" columnalign="left left" columnspacing="1em"><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>1</mn><mo>−</mo><mstyle displaystyle="true" scriptlevel="0"><mfrac><mi> 受击者抗性 </mi><mn>2</mn></mfrac></mstyle><mrow><mo fence="true">(</mo><mi> 受击者抗性 </mi><mo>&lt;</mo><mn>0</mn><mi mathvariant="normal">%</mi><mo fence="true">)</mo></mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mn>1</mn><mo>−</mo><mi> 受击者抗性 </mi><mrow><mo fence="true">(</mo><mn>0</mn><mi mathvariant="normal">%</mi><mo>≤</mo><mi> 受击者抗性 </mi><mo>≤</mo><mn>75</mn><mi mathvariant="normal">%</mi><mo fence="true">)</mo></mrow></mrow></mstyle></mtd></mtr><mtr><mtd><mstyle scriptlevel="0" displaystyle="false"><mrow><mstyle displaystyle="true" scriptlevel="0"><mfrac><mn>1</mn><mrow><mn>4</mn><mo>×</mo><mi> 受击者抗性 </mi><mo>+</mo><mn>100</mn><mi mathvariant="normal">%</mi></mrow></mfrac></mstyle><mrow><mo fence="true">(</mo><mi> 受击者抗性 </mi><mo>&gt;</mo><mn>75</mn><mi mathvariant="normal">%</mi><mo fence="true">)</mo></mrow></mrow></mstyle></mtd></mtr></mtable></mrow></mrow></semantics></math>
 		</li>
 	</ul>
+	<br style="user-select: none;">
+	
+	<hr class="SU_hr">
+	<br style="user-select: none;">
+	<h4 align=center><span class="SU_Icon SU_Icon_Pro">更新历史</span></h4>
+	<br style="user-select: none;">
+	<p class="rank">下面记录了部分更新内容的日志：</p>
+		<table class="Table_Update" align=center>
+			<tr>
+				<th width="20%" style="border-radius: 1rem 0 0 0; min-width:100px;">更新日期</th><th style="border-radius: 0 1rem 0 0;">更新内容</th>
+			</tr>
+			<tr><th>2026/10/31</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">加入了更新历史。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/10/30</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">加入了切换基础生命和常规生命显示的功能，同时也包括搜索结果的生命显示。</li>
+					<li class="disc-li">修改7.2地方传奇图片。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/10/24</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">加入了7.2新怪物的详细机制和介绍。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/10/22</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">加入了2.2版本至今的精英怪物。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/10/21</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">加入了3.4版本至今的精英怪物。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/10/06</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">由于游戏在7.1版本修复了<span style="color:#87CEEB;">凝冰秘法师、凝冰戍卫</span>的「冰棺」机制，<span style="color:#FF8C00;">火元素</span>、<span style="color:#CFA726;">岩元素</span>破盾效率异常降低的bug，现已在<span style="color:#87CEEB;">游雪的护刃、凝冰秘法师、凝冰戍卫</span>的怪物机制中额外说明。</li>
+					<li class="disc-li">由于使用的Fandom图片清晰度在github.io上降低，后续幽境危战图片可能不再更改，现已回退了 7.0 的幽境危战图片。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/10/03</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">更改了<span class="main">左道的胜义尊</span>、<span class="main">渎死之罪</span>的游戏ID。</li>
+					<li class="disc-li">修正了<span style="color:#00BFFF;">秘源机兵统御械 · 毁灭武装</span>(N6)、<span class="main">霜夜巡天灵主 · 惊恨憎愤</span>(N5/6)、<span class="main">历经百战的矮灵雕刻师 · 运斤如风</span>(N6)的环境倍率。</li>
+					<li class="disc-li">由于使用的Fandom图片清晰度在github.io上降低，后续幽境危战图片可能不再更改。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/09/26</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">修改了7.0幽境危战，世界Boss<color style="color:#87CEEB;">游雪的护刃</color>图片链接。</li>
+					<li class="disc-li">添加了7.2 版本的普通、精英怪，为冲鸭机关加入图片。</li>
+					<li class="disc-li">额外加入第六张卡片——剧情敌人：添加了截至7.1的部分剧情敌人，且插入怪物数据、搜索也有改动。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/09/23</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">更加详细的补充了<span style="color:#87CEEB;">游雪的护刃</span>、<span style="color:#87CEEB;">游雪的护刃 ·  不绝余音</span>、<span style="color:#FF8C00;">铁甲熔火帝皇 · 敕命远征</span>的机制。</li>
+					<li class="disc-li">修改了快捷计算中11、12层的环境倍率。</li>
+					<li class="disc-li">修改了网页部分外观，使怪物介绍、怪物机制介绍每一段话具有间隔。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/09/03</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">加入了7.1版本幽境危战，将抗性等效生命值变为以10%为基准。</li>
+					<li class="disc-li">由于7.1版本深境螺旋环境倍率调整，使用说明的环境倍率中增加了一些描述。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/08/24</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">更加详细的补充了<span style="color:#87CEEB;">历经百战的凛狼 · 极寒冰魄</span>的机制。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/08/21</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">修改了7.0怪物（除幽境危战）的图片链接，补充遗漏的机制。</li>
+					<li class="disc-li">修复了<span style="color:#D376F0;">重拳出击鸭 · 重甲武库</span>的抗性。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/07/26</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">怪物机制描述中，涉及元素的描述加入了与元素相符的文字颜色。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/07/18</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">怪物机制描述中，完善了几乎全部怪物机制。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/07/17</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">怪物机制描述中，加入了部分玉衡杯和幽境危战教程。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/07/16</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">调整了网页UI。</li>
+					<li class="disc-li">准备加入怪物机制描述。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/07/15</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">加入了全部领袖敌人数据。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/07/13</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">调整了网页UI。</li>
+					<li class="disc-li">加入了全部地方传奇敌人数据。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/07/11</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">调整了网页UI。</li>
+					<li class="disc-li">加入了搜索功能。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/07/10</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">优化了危战抗性和网页标题.</li>
+					<li class="disc-li">改善了召唤物和部分图片。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/07/08</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">添加了6.0-7.0的敌人数据。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/06/22</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">改善了网页图片加载模式。</li>
+				</ul></td>
+			</tr>
+			<tr><th>2026/06/17</th>
+				<td><ul class="disc-ul" style="margin-left: 1em;">
+					<li class="disc-li">网页框架完善，正式投入使用。</li>
+				</ul></td>
+			</tr>
+		</table>
 	<br style="user-select: none;">
 
 </div>
@@ -5471,6 +5666,7 @@ $(function() {
 // 26/09/26 更改了左道的胜义尊、渎死之罪的 ID。
 // 26/10/03 修正了冰锅、灵主、矮灵的倍率，由于 Fandom 图片清晰度变低，后续危战图片可以不再更改。除 7.2 内容外均已上传，然后更新了 7.0 的危战图片。修复了雪精冰棺火岩元素的影响。
 // 26/10/24 注：加入了 7.2 怪物详细机制和介绍。 
+// 26/10/30 注：加入了切换基础生命和常规生命显示的功能。修改 7.2 地方传奇图片。搜索功能也加入生命切换。
 
 window.Monster_Type_A = {
 	"V72":{
@@ -6270,7 +6466,7 @@ window.Monster_Type_B = {
 				"Type":"地方传奇",
 				"Behavior":"• 战斗中，一名主敌人会率先登场，当其生命值降低至 @50%# 时，会触发@「情谊佑助」#，召唤其他两名援军。触发「情谊佑助」前，主敌人@无法被击败#。在大世界，主敌人每天轮换。<br>• 触发「情谊佑助」时，根据主敌人的类型，生成不同的护盾：主敌人@狮獒#，则为其 @30% 生命盾#，否则为 <Water>48U 水盾#。护盾持续 @30s# 。<br>• 若<Water>水元素护盾#受@星烁反应#影响，则<Elec>雷#/<Wind>风#/<Ice>冰#元素会以 @1:4 #比例消耗护盾。伤害盾不受影响。<br>• 击破护盾使敌方全体虚弱，所有抗性降低 @50%# ，持续 @15s# 。若未能击破护盾，则敌方全体回复生命值并提升攻击力。",
 				"Desc":"三只兽怪组成的小小帮派。<br>整日在新基捷城游荡，以在矿区周围找机会窃取挖出来的克什尼克晶矿并在地下市场售卖为业，偶尔也做些收取过路费的工作。<br>统治此地的矮灵大公阿尔维斯去世之后，如今尚未完全恢复安定的新基捷城正是这些浑水摸鱼者最大的乐园。",
-				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/2/20/Leomastiff_Guard_Icon.png",
+				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Sheepdog_02.png",
 				"RES":{
 					"常态":	[10, 50, 10, 10, 10, 10, 10, 10],
 					"瘫痪":	[-40, 0,-40,-40,-40,-40,-40,-40],
@@ -6289,7 +6485,7 @@ window.Monster_Type_B = {
 				"Type":"历经百战",
 				"Behavior":"• 战斗中，一名主敌人会率先登场，当其生命值降低至 @50%# 时，会触发@「情谊佑助」#，召唤其他两名援军。触发「情谊佑助」前，主敌人@无法被击败#。在大世界，主敌人每天轮换。<br>• 触发「情谊佑助」时，根据主敌人的类型，生成不同的护盾：主敌人@狮獒#，则为其 @30% 生命盾#，否则为 <Water>48U 水盾#。护盾持续 @30s# 。<br>• 若<Water>水元素护盾#受@星烁反应#影响，则<Elec>雷#/<Wind>风#/<Ice>冰#元素会以 @1:4 #比例消耗护盾。伤害盾不受影响。<br>• 击破护盾使敌方全体虚弱，所有抗性降低 @50%# ，持续 @15s# 。若未能击破护盾，则敌方全体回复生命值并提升攻击力。",
 				"Desc":"三只兽怪组成的小小帮派。<br>整日在新基捷城游荡，以在矿区周围找机会窃取挖出来的克什尼克晶矿并在地下市场售卖为业，偶尔也做些收取过路费的工作。<br>统治此地的矮灵大公阿尔维斯去世之后，如今尚未完全恢复安定的新基捷城正是这些浑水摸鱼者最大的乐园。",
-				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/2/20/Leomastiff_Guard_Icon.png",
+				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Sheepdog_02.png",
 				"RES":{
 					"常态":	[10, 50, 10, 10, 10, 10, 10, 10],
 					"瘫痪":	[-40, 0,-40,-40,-40,-40,-40,-40],
@@ -6308,7 +6504,7 @@ window.Monster_Type_B = {
 				"Type":"地方传奇",
 				"Behavior":"• 战斗中，一名主敌人会率先登场，当其生命值降低至 @50%# 时，会触发@「情谊佑助」#，召唤其他两名援军。触发「情谊佑助」前，主敌人@无法被击败#。在大世界，主敌人每天轮换。<br>• 触发「情谊佑助」时，根据主敌人的类型，生成不同的护盾：主敌人@狮獒#，则为其 @30% 生命盾#，否则为 <Water>48U 水盾#。护盾持续 @30s# 。<br>• 若<Water>水元素护盾#受@星烁反应#影响，则<Elec>雷#/<Wind>风#/<Ice>冰#元素会以 @1:4 #比例消耗护盾。伤害盾不受影响。<br>• 击破护盾使敌方全体虚弱，所有抗性降低 @50%# ，持续 @15s# 。若未能击破护盾，则敌方全体回复生命值并提升攻击力。",
 				"Desc":"三只兽怪组成的小小帮派。<br>整日在新基捷城游荡，以在矿区周围找机会窃取挖出来的克什尼克晶矿并在地下市场售卖为业，偶尔也做些收取过路费的工作。<br>统治此地的矮灵大公阿尔维斯去世之后，如今尚未完全恢复安定的新基捷城正是这些浑水摸鱼者最大的乐园。",
-				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/8/89/Long-Eared_Striker_Icon.png",
+				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Arctichare_02.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 50, 10, 10, 10],
 					"瘫痪":	[-40,-40,-40,-40, 0,-40,-40,-40],
@@ -6327,7 +6523,7 @@ window.Monster_Type_B = {
 				"Type":"历经百战",
 				"Behavior":"• 战斗中，一名主敌人会率先登场，当其生命值降低至 @50%# 时，会触发@「情谊佑助」#，召唤其他两名援军。触发「情谊佑助」前，主敌人@无法被击败#。在大世界，主敌人每天轮换。<br>• 触发「情谊佑助」时，根据主敌人的类型，生成不同的护盾：主敌人@狮獒#，则为其 @30% 生命盾#，否则为 <Water>48U 水盾#。护盾持续 @30s# 。<br>• 若<Water>水元素护盾#受@星烁反应#影响，则<Elec>雷#/<Wind>风#/<Ice>冰#元素会以 @1:4 #比例消耗护盾。伤害盾不受影响。<br>• 击破护盾使敌方全体虚弱，所有抗性降低 @50%# ，持续 @15s# 。若未能击破护盾，则敌方全体回复生命值并提升攻击力。",
 				"Desc":"三只兽怪组成的小小帮派。<br>整日在新基捷城游荡，以在矿区周围找机会窃取挖出来的克什尼克晶矿并在地下市场售卖为业，偶尔也做些收取过路费的工作。<br>统治此地的矮灵大公阿尔维斯去世之后，如今尚未完全恢复安定的新基捷城正是这些浑水摸鱼者最大的乐园。",
-				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/8/89/Long-Eared_Striker_Icon.png",
+				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Arctichare_02.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 50, 10, 10, 10],
 					"瘫痪":	[-40,-40,-40,-40, 0,-40,-40,-40],
@@ -6346,7 +6542,7 @@ window.Monster_Type_B = {
 				"Type":"地方传奇",
 				"Behavior":"• 战斗中，一名主敌人会率先登场，当其生命值降低至 @50%# 时，会触发@「情谊佑助」#，召唤其他两名援军。触发「情谊佑助」前，主敌人@无法被击败#。在大世界，主敌人每天轮换。<br>• 触发「情谊佑助」时，根据主敌人的类型，生成不同的护盾：主敌人@狮獒#，则为其 @30% 生命盾#，否则为 <Water>48U 水盾#。护盾持续 @30s# 。<br>• 若<Water>水元素护盾#受@星烁反应#影响，则<Elec>雷#/<Wind>风#/<Ice>冰#元素会以 @1:4 #比例消耗护盾。伤害盾不受影响。<br>• 击破护盾使敌方全体虚弱，所有抗性降低 @50%# ，持续 @15s# 。若未能击破护盾，则敌方全体回复生命值并提升攻击力。",
 				"Desc":"三只兽怪组成的小小帮派。<br>整日在新基捷城游荡，以在矿区周围找机会窃取挖出来的克什尼克晶矿并在地下市场售卖为业，偶尔也做些收取过路费的工作。<br>统治此地的矮灵大公阿尔维斯去世之后，如今尚未完全恢复安定的新基捷城正是这些浑水摸鱼者最大的乐园。",
-				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/2/20/Channel_Contact_Icon.png",
+				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Beaver_02.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 10, 10, 50, 10],
 					"瘫痪":	[-40,-40,-40,-40,-40,-40, 0,-40],
@@ -6365,7 +6561,7 @@ window.Monster_Type_B = {
 				"Type":"历经百战",
 				"Behavior":"• 战斗中，一名主敌人会率先登场，当其生命值降低至 @50%# 时，会触发@「情谊佑助」#，召唤其他两名援军。触发「情谊佑助」前，主敌人@无法被击败#。在大世界，主敌人每天轮换。<br>• 触发「情谊佑助」时，根据主敌人的类型，生成不同的护盾：主敌人@狮獒#，则为其 @30% 生命盾#，否则为 <Water>48U 水盾#。护盾持续 @30s# 。<br>• 若<Water>水元素护盾#受@星烁反应#影响，则<Elec>雷#/<Wind>风#/<Ice>冰#元素会以 @1:4 #比例消耗护盾。伤害盾不受影响。<br>• 击破护盾使敌方全体虚弱，所有抗性降低 @50%# ，持续 @15s# 。若未能击破护盾，则敌方全体回复生命值并提升攻击力。",
 				"Desc":"三只兽怪组成的小小帮派。<br>整日在新基捷城游荡，以在矿区周围找机会窃取挖出来的克什尼克晶矿并在地下市场售卖为业，偶尔也做些收取过路费的工作。<br>统治此地的矮灵大公阿尔维斯去世之后，如今尚未完全恢复安定的新基捷城正是这些浑水摸鱼者最大的乐园。",
-				"ImgLink":"https://static.wikia.nocookie.net/gensin-impact/images/2/20/Channel_Contact_Icon.png",
+				"ImgLink":"https://api.lunaris.moe/data/assets/monstericon/UI_MonsterIcon_Volkodlak_Beaver_02.png",
 				"RES":{
 					"常态":	[10, 10, 10, 10, 10, 10, 50, 10],
 					"瘫痪":	[-40,-40,-40,-40,-40,-40, 0,-40],
@@ -12565,6 +12761,7 @@ window.Monster_Type_F = {
 				"HP":"140",
 				"HPType":"2",
 				"HPShow":"140.0",
+				"LV":"110",
 				"Element":"火",
 				"Title":"「天理的裁判者」<br>「悖理的受黜者」",
 				"Type":"剧情",
@@ -12587,6 +12784,7 @@ window.Monster_Type_F = {
 				"HP":"9.6",
 				"HPType":"2",
 				"HPShow":"9.6",
+				"LV":"101",
 				"Element":"冰",
 				"Title":"赫斯珀利德斯的守护者",
 				"Type":"剧情",
@@ -12609,6 +12807,7 @@ window.Monster_Type_F = {
 				"HP":"13.5",
 				"HPType":"2",
 				"HPShow":"13.5",
+				"LV":"90",
 				"Title":"「博士」多托雷",
 				"Type":"剧情",
 				"From":"该敌人来自 魔神任务 空月之歌 第十幕「虚空劫灰往事书」。",
@@ -12625,6 +12824,7 @@ window.Monster_Type_F = {
 				"HP":"40",
 				"HPType":"2",
 				"HPShow":"40.0",
+				"LV":"90",
 				"Title":"「博士」多托雷",
 				"Type":"剧情",
 				"From":"该敌人来自 魔神任务 空月之歌 第十幕「虚空劫灰往事书」。",
@@ -12641,6 +12841,7 @@ window.Monster_Type_F = {
 				"HP":"4.32",
 				"HPType":"2",
 				"HPShow":"4.32",
+				"LV":"102",
 				"Element":"草",
 				"Title":"会动才是它的设计",
 				"Type":"剧情",
@@ -12664,6 +12865,7 @@ window.Monster_Type_F = {
 				"HP":"10.5",
 				"HPType":"2",
 				"HPShow":"10.5",
+				"LV":"101",
 				"Title":"世界望楼之守望",
 				"Type":"剧情",
 				"From":"该敌人来自 世界任务「山中好长日 · 审判」。",
@@ -12680,6 +12882,7 @@ window.Monster_Type_F = {
 				"HP":"70",
 				"HPType":"2",
 				"HPShow":"70.0",
+				"LV":"101",
 				"Title":"世界望楼之守望",
 				"Type":"剧情",
 				"From":"该敌人来自 世界任务「山中好长日 · 审判」。",
@@ -12696,6 +12899,7 @@ window.Monster_Type_F = {
 				"HP":"105",
 				"HPType":"2",
 				"HPShow":"105.0",
+				"LV":"103",
 				"Title":"",
 				"Type":"剧情",
 				"From":"该敌人来自 世界任务「山有林猪粗嗅花」。",
@@ -12717,6 +12921,7 @@ window.Monster_Type_F = {
 				"HP":"23.625",
 				"HPType":"2",
 				"HPShow":"23.625",
+				"LV":"98",
 				"Element":"风",
 				"Title":"毁灭万物亦可自由",
 				"Type":"剧情",
@@ -12735,6 +12940,7 @@ window.Monster_Type_F = {
 				"HP":"11.5",
 				"HPType":"2",
 				"HPShow":"11.5",
+				"LV":"90",
 				"Title":"无铭染血之狼灵",
 				"Type":"剧情",
 				"From":"该敌人来自 法尔伽的试炼。",
@@ -12756,6 +12962,7 @@ window.Monster_Type_F = {
 				"HP":"105",
 				"HPType":"2",
 				"HPShow":"105.0",
+				"LV":"90",
 				"Title":"愚人众执行官第二席",
 				"Type":"剧情",
 				"From":"该敌人来自 魔神任务 空月之歌 第八幕「真实之月」。",
@@ -12774,6 +12981,7 @@ window.Monster_Type_F = {
 				"HP":"62.5",
 				"HPType":"2",
 				"HPShow":"62.5",
+				"LV":"90",
 				"Title":"多托雷",
 				"Type":"剧情",
 				"From":"该敌人来自 魔神任务 空月之歌 第八幕「真实之月」。",
@@ -12792,6 +13000,7 @@ window.Monster_Type_F = {
 				"HP":"2",
 				"HPType":"2",
 				"HPShow":"2.0",
+				"LV":"103",
 				"Title":"「黑枪太婆」",
 				"Type":"剧情",
 				"From":"该敌人来自 世界任务「月之东，日之西 · 寒鸦的系谱」。",
@@ -12810,6 +13019,7 @@ window.Monster_Type_F = {
 				"HP":"5.35",
 				"HPType":"2",
 				"HPShow":"5.35",
+				"LV":"102",
 				"Element":"草",
 				"Title":"被滋培的种系",
 				"Type":"剧情",
@@ -12833,6 +13043,7 @@ window.Monster_Type_F = {
 				"HP":"5.5",
 				"HPType":"2",
 				"HPShow":"5.5",
+				"LV":"100",
 				"Element":"冰",
 				"Title":"悄悄跨越了界限的魔物",
 				"Type":"剧情",
@@ -12856,6 +13067,7 @@ window.Monster_Type_F = {
 				"HP":"72",
 				"HPType":"2",
 				"HPShow":"72.0",
+				"LV":"102",
 				"Title":"「猎月人」雷利尔",
 				"Type":"剧情",
 				"From":"该敌人来自 魔神任务 空月之歌 第四幕「回望湮灭的月光」。",
@@ -12877,6 +13089,7 @@ window.Monster_Type_F = {
 				"HP":"100",
 				"HPType":"2",
 				"HPShow":"100.0",
+				"LV":"104",
 				"Title":"层侵的躯块",
 				"Type":"剧情",
 				"From":"该敌人来自 世界任务「最后的特诺奇兹托克人」。",
@@ -12893,6 +13106,7 @@ window.Monster_Type_F = {
 				"HP":"43",
 				"HPType":"2",
 				"HPShow":"43.0",
+				"LV":"97",
 				"Title":"大王！",
 				"Type":"剧情",
 				"From":"该敌人来自 世界任务「邂逅总在悠闲时」。",
@@ -12914,6 +13128,7 @@ window.Monster_Type_F = {
 				"HP":"18",
 				"HPType":"2",
 				"HPShow":"18.0",
+				"LV":"90",
 				"Title":"血蛇的断锋<br>斯克弗努格",
 				"Type":"剧情",
 				"From":"该敌人来自 丝柯克传说任务 第一幕「磷星之章 · 星与夜的低语」。",
@@ -12935,6 +13150,7 @@ window.Monster_Type_F = {
 				"HP":"28",
 				"HPType":"2",
 				"HPShow":"28.0",
+				"LV":"80",
 				"Title":"最后试炼机关",
 				"Type":"剧情",
 				"From":"该敌人来自 世界任务「失落圣城与千年来者」。",
@@ -12956,6 +13172,7 @@ window.Monster_Type_F = {
 				"HP":"168",
 				"HPType":"2",
 				"HPShow":"168.0",
+				"LV":"80",
 				"Title":"化形蚀灭之龙",
 				"Type":"剧情",
 				"From":"该敌人来自 魔神任务 第五章 第五幕「炽烈的还魂诗」。",
@@ -13047,6 +13264,7 @@ window.Monster_Type_F = {
 				"HP":"10.45",
 				"HPType":"2",
 				"HPShow":"10.45",
+				"LV":"100",
 				"Element":"水",
 				"Title":"不完全的新宇宙秩序",
 				"Type":"剧情",
@@ -13069,6 +13287,7 @@ window.Monster_Type_F = {
 				"HP":"4.5",
 				"HPType":"2",
 				"HPShow":"4.5",
+				"LV":"90",
 				"Element":"草",
 				"Title":"历经千年之「末日」的进化生命",
 				"Type":"剧情",
@@ -13085,6 +13304,7 @@ window.Monster_Type_F = {
 				"HP":"4.0",
 				"HPType":"2",
 				"HPShow":"4.0",
+				"LV":"90",
 				"Element":"草",
 				"Title":"经由「火种」而得以复苏的生命",
 				"Type":"剧情",
@@ -13101,6 +13321,7 @@ window.Monster_Type_F = {
 				"HP":"0.4",
 				"HPType":"2",
 				"HPShow":"0.8",
+				"LV":"90",
 				"Element":"草",
 				"Title":"历经千年之「末日」的进化生命<br>阿佩普的子嗣",
 				"Type":"剧情 / 召唤物",
@@ -13117,6 +13338,7 @@ window.Monster_Type_F = {
 				"HP":"0.6",
 				"HPType":"2",
 				"HPShow":"0.6",
+				"LV":"90",
 				"Element":"草",
 				"Title":"历经千年之「末日」的进化生命<br>阿佩普的子嗣",
 				"Type":"剧情 / 召唤物",
@@ -13133,6 +13355,7 @@ window.Monster_Type_F = {
 				"HP":"0.8",
 				"HPType":"2",
 				"HPShow":"0.8",
+				"LV":"90",
 				"Element":"草",
 				"Title":"历经千年之「末日」的进化生命<br>阿佩普的子嗣",
 				"Type":"剧情 / 召唤物",
@@ -13149,6 +13372,7 @@ window.Monster_Type_F = {
 				"HP":"0.8",
 				"HPType":"2",
 				"HPShow":"0.8",
+				"LV":"90",
 				"Element":"草",
 				"Title":"历经千年之「末日」的进化生命<br>阿佩普的子嗣",
 				"Type":"剧情 / 召唤物",
@@ -13166,6 +13390,7 @@ window.Monster_Type_F = {
 				"HP":"0.5",
 				"HPType":"2",
 				"HPShow":"0.5",
+				"LV":"90",
 				"Element":"草",
 				"Title":"历经千年之「末日」的进化生命<br>阿佩普的子嗣",
 				"Type":"剧情 / 召唤物",
@@ -13182,6 +13407,7 @@ window.Monster_Type_F = {
 				"HP":"0.6",
 				"HPType":"2",
 				"HPShow":"0.6",
+				"LV":"90",
 				"Element":"草",
 				"Title":"历经千年之「末日」的进化生命<br>阿佩普的子嗣",
 				"Type":"剧情 / 召唤物",
@@ -13203,6 +13429,7 @@ window.Monster_Type_F = {
 				"HP":"5.0",
 				"HPType":"2",
 				"HPShow":"5.0",
+				"LV":"90",
 				"Element":"雷",
 				"Title":"「正机之神」",
 				"Type":"剧情",
@@ -13219,6 +13446,7 @@ window.Monster_Type_F = {
 				"HP":"9.0",
 				"HPType":"2",
 				"HPShow":"9.0",
+				"LV":"90",
 				"Element":"雷",
 				"Title":"「正机之神」",
 				"Type":"剧情",
@@ -13237,6 +13465,7 @@ window.Monster_Type_F = {
 				"HP":"4.5",
 				"HPType":"2",
 				"HPShow":"4.5",
+				"LV":"90",
 				"Element":"雷",
 				"Title":"「正机之神」",
 				"Type":"剧情",
@@ -13261,6 +13490,7 @@ window.Monster_Type_F = {
 				"HPType":"2",
 				"HPShow":"3.0",
 				"HPNum":"3",
+				"LV":"90",
 				"Element":"水",
 				"Title":"「漩涡的余威」",
 				"Type":"剧情",
@@ -13283,6 +13513,7 @@ window.Monster_Type_F = {
 				"HP":"20",
 				"HPType":"2",
 				"HPShow":"20.0",
+				"LV":"90",
 				"Element":"雷",
 				"Title":"一心净土的主人",
 				"Type":"剧情",
@@ -13305,6 +13536,7 @@ window.Monster_Type_F = {
 				"HP":"20",
 				"HPType":"2",
 				"HPShow":"20.0",
+				"LV":"90",
 				"Element":"雷",
 				"Title":"尘世七执政 · 雷之神",
 				"Type":"剧情",
@@ -13323,6 +13555,7 @@ window.Monster_Type_F = {
 				"HPType":"2",
 				"HPShow":"6.0",
 				"HPNum":"2",
+				"LV":"95",
 				"Element":"雷",
 				"Title":"",
 				"Type":"成就",
@@ -13341,6 +13574,7 @@ window.Monster_Type_F = {
 				"HPType":"2",
 				"HPShow":"10.8",
 				"HPNum":"2",
+				"LV":"95",
 				"Element":"雷",
 				"Title":"",
 				"Type":"成就",
@@ -13393,6 +13627,24 @@ var Card_1_Monster_Type_F = ""; // 20260926 改动
 //$("#Card_Page_1_4").hide();
 //$("#Card_Page_1_5").hide();
 
+window.Fast_Calc = {
+	"Default":[100,100],
+	"SO3":[90,120],
+	"SO4":[100,400],
+	"SO5":[105,100],
+	"SO6":[110,100],
+	"SA111":[88,300],
+	"SA112":[90,300],
+	"SA113":[92,300],
+	"SA121":[95,475],
+	"SA122":[98,475],
+	"SA123":[100,475],
+	"WL6":[83,100],
+	"WL8":[93,100],
+	"WL9":[103,100],
+	"DM90":[90,100],
+}
+
 
 window.Element_Link = {
 		"Pyro":"https://static.wikia.nocookie.net/gensin-impact/images/e/e8/Element_Pyro.png",
@@ -13421,7 +13673,11 @@ $.each(Monster_Type_A, function(key, value){
 			Card_1_Monster_Type_A += '<img class="Item_Img lazyload" style="transform: scale(1.25);border:none" src="'+ monster_data["ImgLink"] +'" loading="lazy">';
 		}
 		Card_1_Monster_Type_A += '<div class="Item_Text"><div class="Item_Title">'+ monster_data["Name"] +'</div><div class="Item_Desc">'+ monster_data["Title"] +' </div></div>';
-		Card_1_Monster_Type_A += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>野伏</div>';
+		// 20261030 加入显示生命切换
+		var HP_Calc_1 = (Level_Scaling[100][monster_data["HPType"]] * monster_data["HP"] * 4).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+		var HP_Calc_2 = (Level_Scaling[105][monster_data["HPType"]] * monster_data["HP"] * monster_data["SO5"] / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+		var HP_Calc_3 = (Level_Scaling[110][monster_data["HPType"]] * monster_data["HP"] * monster_data["SO6"] / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+		Card_1_Monster_Type_A += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>野伏</span><span class="Item_HPCalc">'+ HP_Calc_1 +'<br>'+ HP_Calc_2 +'<br>'+ HP_Calc_3 +'</span></div>';
 		Card_1_Monster_Type_A += '</li>';
 	})
 	Card_1_Monster_Type_A += '</ul>';
@@ -13442,10 +13698,16 @@ $.each(Monster_Type_B, function(key, value){
 		Card_1_Monster_Type_B += '<li class="Sub_Item" onclick="Card_01_Monster(Monster_Type_B,\''+key+'\','+monster_id+')">';
 		Card_1_Monster_Type_B += '<img class="Item_Img lazyload" src="'+ monster_data["ImgLink"] +'" loading="lazy">';
 		Card_1_Monster_Type_B += '<div class="Item_Text"><div class="Item_Title"><span class="main">'+ monster_data["NameTags"] +'</span>'+ monster_data["Name"] +'</div><div class="Item_Desc">'+ monster_data["Title"] +' </div></div>';
-		if (monster_data["HPTypeName"] == undefined){
-			Card_1_Monster_Type_B += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>野伏</div>';
+		// 20261030 加入显示生命切换
+		if (String(monster_id).slice(2,3) === "1"){
+			var HP_Calc_1 = "世界 9<br>" + (Level_Scaling[103][monster_data["HPType"]] * monster_data["HP"]).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
 		} else {
-			Card_1_Monster_Type_B += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</div>';
+			var HP_Calc_1 = "深境 12-3<br>" + (Level_Scaling[100][monster_data["HPType"]] * monster_data["HP"] * Fast_Calc["SA123"][1] / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+		}
+		if (monster_data["HPTypeName"] == undefined){
+			Card_1_Monster_Type_B += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>野伏</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
+		} else {
+			Card_1_Monster_Type_B += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
 		}
 		Card_1_Monster_Type_B += '</li>';
 	})
@@ -13467,10 +13729,16 @@ $.each(Monster_Type_C, function(key, value){
 		Card_1_Monster_Type_C += '<li class="Sub_Item" onclick="Card_01_Monster(Monster_Type_C,\''+key+'\','+monster_id+')">';
 		Card_1_Monster_Type_C += '<img class="Item_Img lazyload" src="'+ monster_data["ImgLink"] +'" loading="lazy">';
 		Card_1_Monster_Type_C += '<div class="Item_Text"><div class="Item_Title"><span class="main">'+ monster_data["NameTags"] +'</span>'+ monster_data["Name"] +'</div><div class="Item_Desc">'+ monster_data["Title"] +' </div></div>';
-		if (monster_data["HPTypeName"] == undefined){
-			Card_1_Monster_Type_C += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>野伏</div>';
+		// 20261030 加入显示生命切换
+		if (String(monster_id).slice(2,3) === "3"){
+			var HP_Calc_1 = "周本 Lv.90<br>" + (Level_Scaling[90][monster_data["HPType"]] * monster_data["HP"]).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
 		} else {
-			Card_1_Monster_Type_C += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</div>';
+			var HP_Calc_1 = "深境 12-3<br>" + (Level_Scaling[100][monster_data["HPType"]] * monster_data["HP"] * Fast_Calc["SA123"][1] / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+		}
+		if (monster_data["HPTypeName"] == undefined){
+			Card_1_Monster_Type_C += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>野伏</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
+		} else {
+			Card_1_Monster_Type_C += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
 		}
 		Card_1_Monster_Type_C += '</li>';
 	})
@@ -13492,10 +13760,12 @@ $.each(Monster_Type_D, function(key, value){
 		Card_1_Monster_Type_D += '<li class="Sub_Item" onclick="Card_01_Monster(Monster_Type_D,\''+key+'\','+monster_id+')">';
 		Card_1_Monster_Type_D += '<img class="Item_Img lazyload" src="'+ monster_data["ImgLink"] +'" loading="lazy">';
 		Card_1_Monster_Type_D += '<div class="Item_Text"><div class="Item_Title"><span class="main">'+ monster_data["NameTags"] +'</span>'+ monster_data["Name"] +'</div><div class="Item_Desc">'+ monster_data["Title"] +' </div></div>';
+		// 20261030 加入显示生命切换
+		var HP_Calc_1 = "深境 12-3<br>" + (Level_Scaling[100][monster_data["HPType"]] * monster_data["HP"] * Fast_Calc["SA123"][1] / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
 		if (monster_data["HPTypeName"] == undefined){
-			Card_1_Monster_Type_D += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>野伏</div>';
+			Card_1_Monster_Type_D += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>野伏</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
 		} else {
-			Card_1_Monster_Type_D += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</div>';
+			Card_1_Monster_Type_D += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
 		}
 		Card_1_Monster_Type_D += '</li>';
 	})
@@ -13517,10 +13787,12 @@ $.each(Monster_Type_E, function(key, value){
 		Card_1_Monster_Type_E += '<li class="Sub_Item" onclick="Card_01_Monster(Monster_Type_E,\''+key+'\','+monster_id+')">';
 		Card_1_Monster_Type_E += '<img class="Item_Img lazyload" src="'+ monster_data["ImgLink"] +'" loading="lazy">';
 		Card_1_Monster_Type_E += '<div class="Item_Text"><div class="Item_Title"><span class="main">'+ monster_data["NameTags"] +'</span>'+ monster_data["Name"] +'</div><div class="Item_Desc">'+ monster_data["Title"] +' </div></div>';
+		// 20261030 加入显示生命切换
+		var HP_Calc_1 = "深境 12-3<br>" + (Level_Scaling[100][monster_data["HPType"]] * monster_data["HP"] * Fast_Calc["SA123"][1] / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
 		if (monster_data["HPTypeName"] == undefined){
-			Card_1_Monster_Type_E += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>野伏</div>';
+			Card_1_Monster_Type_E += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>野伏</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
 		} else {
-			Card_1_Monster_Type_E += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</div>';
+			Card_1_Monster_Type_E += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
 		}
 		Card_1_Monster_Type_E += '</li>';
 	})
@@ -13543,10 +13815,16 @@ $.each(Monster_Type_F, function(key, value){
 		Card_1_Monster_Type_F += '<li class="Sub_Item" onclick="Card_01_Monster(Monster_Type_F,\''+key+'\','+monster_id+')">';
 		Card_1_Monster_Type_F += '<img class="Item_Img lazyload" src="'+ monster_data["ImgLink"] +'" loading="lazy">';
 		Card_1_Monster_Type_F += '<div class="Item_Text"><div class="Item_Title"><span class="main">'+ monster_data["NameTags"] +'</span>'+ monster_data["Name"] +'</div><div class="Item_Desc">'+ monster_data["Title"] +' </div></div>';
-		if (monster_data["HPTypeName"] == undefined){
-			Card_1_Monster_Type_F += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>野伏</div>';
+		// 20261030 加入显示生命切换
+		if (monster_data["LV"] == undefined){
+			var HP_Calc_1 = "世界 9<br>" + (Level_Scaling[103][monster_data["HPType"]] * monster_data["HP"]).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
 		} else {
-			Card_1_Monster_Type_F += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</div>';
+			var HP_Calc_1 = "剧情 Lv."+ monster_data["LV"] +"<br>" + (Level_Scaling[monster_data["LV"]][monster_data["HPType"]] * monster_data["HP"]).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+		}
+		if (monster_data["HPTypeName"] == undefined){
+			Card_1_Monster_Type_F += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>野伏</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
+		} else {
+			Card_1_Monster_Type_F += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
 		}
 		Card_1_Monster_Type_F += '</li>';
 	})
@@ -13569,26 +13847,23 @@ $("#Content_06_div").append(Card_1_Monster_Type_F);
 function show_leak(){
 	$(".Leak_data").removeClass("Leak_data");
 }
+
+window.base_hp_show = true;
+function switch_hp_show(){
+	if (base_hp_show) {
+		$(".Item_BaseHP").hide();
+		$(".Item_HPCalc").show();
+		base_hp_show = false;
+	} else {
+		$(".Item_BaseHP").show();
+		$(".Item_HPCalc").hide();
+		base_hp_show = true;
+	}
+	window["Content_Resize"]();
+}
 </script>
 
 <script type="text/javascript"> // 数据迁移与计算 
-window.Fast_Calc = {
-	"Default":[100,100],
-	"SO3":[90,120],
-	"SO4":[100,400],
-	"SO5":[105,100],
-	"SO6":[110,100],
-	"SA111":[88,300],
-	"SA112":[90,300],
-	"SA113":[92,300],
-	"SA121":[95,475],
-	"SA122":[98,475],
-	"SA123":[100,475],
-	"WL6":[83,100],
-	"WL8":[93,100],
-	"WL9":[103,100],
-	"DM90":[90,100],
-}
 window.Force_Calc = 0;
 function Card_01_Monster(Dict_ID,Version,Monster_id){
 	const Monster_Data = Dict_ID[Version]["Monsters"][Monster_id];
@@ -13909,10 +14184,30 @@ $(function(){
 			} else {
 				SearchResult_html += '<div class="Item_Text"><div class="Item_Title">'+ monster_data["Name"] +'</div><div class="Item_Desc">'+ monster_data["Title"] +' </div></div>';
 			}
-			if (monster_data["HPTypeName"] == undefined){
-				SearchResult_html += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>野伏</div>';
+			if (String(monster_id).slice(2,3) === "0"){
+				var HP_Calc_1 = (Level_Scaling[100][monster_data["HPType"]] * monster_data["HP"] * 4).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+				var HP_Calc_2 = (Level_Scaling[105][monster_data["HPType"]] * monster_data["HP"] * monster_data["SO5"] / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+				var HP_Calc_3 = (Level_Scaling[110][monster_data["HPType"]] * monster_data["HP"] * monster_data["SO6"] / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+				SearchResult_html += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>野伏</span><span class="Item_HPCalc">'+ HP_Calc_1 +'<br>'+ HP_Calc_2 +'<br>'+ HP_Calc_3 +'</span></div>';
 			} else {
-				SearchResult_html += '<div class="Item_Value">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</div>';
+				if (String(monster_id).slice(2,3) === "1"){
+					var HP_Calc_1 = "世界 9<br>" + (Level_Scaling[103][monster_data["HPType"]] * monster_data["HP"]).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+				} else if (String(monster_id).slice(2,3) === "3"){
+					var HP_Calc_1 = "周本 Lv.90<br>" + (Level_Scaling[90][monster_data["HPType"]] * monster_data["HP"]).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+				} else if (String(monster_id).slice(2,3) === "7"){
+					if (monster_data["LV"] == undefined){
+						var HP_Calc_1 = "世界 9<br>" + (Level_Scaling[103][monster_data["HPType"]] * monster_data["HP"]).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+					} else {
+						var HP_Calc_1 = "剧情 Lv."+ monster_data["LV"] +"<br>" + (Level_Scaling[monster_data["LV"]][monster_data["HPType"]] * monster_data["HP"]).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+					}
+				} else {
+					var HP_Calc_1 = "深境 12-3<br>" + (Level_Scaling[100][monster_data["HPType"]] * monster_data["HP"] * Fast_Calc["SA123"][1] / 100).toFixed(0).toString().replace(/\B(?=(\d{3})+\b)/g, ",");
+				}
+				if (monster_data["HPTypeName"] == undefined){
+					SearchResult_html += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>野伏</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
+				} else {
+					SearchResult_html += '<div class="Item_Value"><span class="Item_BaseHP">'+ monster_data["HPShow"] +'<br>'+ monster_data["HPTypeName"] +'</span><span class="Item_HPCalc">'+ HP_Calc_1 +'</span></div>';
+				}
 			}
 			SearchResult_html += '</li>';
 		})
@@ -13921,6 +14216,13 @@ $(function(){
 		SearchResult_html += '<br style="user-select: none;">';
 		$SearchResult.append(SearchResult_html);
 		
+			if (base_hp_show) {
+				$(".Item_BaseHP").show();
+				$(".Item_HPCalc").hide();
+			} else {
+				$(".Item_BaseHP").hide();
+				$(".Item_HPCalc").show();
+			}
 		$SearchResult.show();
 		
 		$('.lazyload').each(function() {
